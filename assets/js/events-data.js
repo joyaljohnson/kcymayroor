@@ -129,7 +129,8 @@ const EVENTS = [
     status: null,
     description: [],
     links: [
-      { label: "View Course List & Presentation Files", href: "https://kcymayroor.notion.site/Career-Guidance-1f9934afa3d1809eb095cee54495e809", external: true },
+      { label: "View Course List", href: "https://docs.google.com/spreadsheets/d/145IaIgrI6y9q4WOGEaxnbO5IG16is3mNLnhEEaFUrAU/edit?usp=sharing", external: true },
+      { label: "View Presentation Files", href: "https://drive.google.com/drive/folders/1Zon0ynYCHjTMnYWQSGup2l7JrfWV2exy", external: true },
     ],
     images: ["1.png"],
   },
