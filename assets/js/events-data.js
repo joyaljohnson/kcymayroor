@@ -5,6 +5,7 @@ const EVENTS = [
     icon: "",
     title: "KCYM TRIP 2025",
     date: "September 13, 2025",
+    dateValue: "2025-09-13",
     type: "Offline",
     status: null,
     description: [],
@@ -16,6 +17,7 @@ const EVENTS = [
     icon: "",
     title: "പൂക്കള മത്സരം",
     date: "September 6, 2025",
+    dateValue: "2025-09-06",
     type: "Offline",
     status: null,
     description: [
@@ -31,6 +33,7 @@ const EVENTS = [
     icon: "",
     title: "വടംവലി മത്സരം",
     date: "September 6, 2025",
+    dateValue: "2025-09-06",
     type: "Offline",
     status: null,
     description: [
@@ -46,6 +49,7 @@ const EVENTS = [
     icon: "",
     title: "ജിമിട്ട്",
     date: "September 6, 2025",
+    dateValue: "2025-09-06",
     type: "Offline",
     status: null,
     description: [
@@ -59,6 +63,7 @@ const EVENTS = [
     icon: "",
     title: "ONAARAV (ഓണാരവ്) 2025",
     date: "September 6, 2025",
+    dateValue: "2025-09-06",
     type: "Offline",
     status: null,
     description: [
@@ -72,6 +77,7 @@ const EVENTS = [
     icon: "",
     title: "ഓണം കിറ്റ് വിതരണം",
     date: "September 4, 2025",
+    dateValue: "2025-09-04",
     type: null,
     status: null,
     description: [
@@ -86,6 +92,7 @@ const EVENTS = [
     icon: "🎮",
     title: "EFootball Gaming Tournament",
     date: "September 1, 2025 · 1:30 PM – 4:30 PM",
+    dateValue: "2025-09-01",
     type: "Online",
     status: "cancelled",
     description: [
@@ -101,6 +108,7 @@ const EVENTS = [
     icon: "",
     title: "ശതാബ്ദി - ദീപശിഖ പ്രയാണം",
     date: "August 24, 2025",
+    dateValue: "2025-08-24",
     type: "Offline",
     status: null,
     description: [
@@ -114,6 +122,7 @@ const EVENTS = [
     icon: "♻️",
     title: "Scrap Collection",
     date: "August 15 – 17, 2025",
+    dateValue: "2025-08-15",
     type: "Offline",
     status: null,
     description: [],
@@ -125,6 +134,7 @@ const EVENTS = [
     icon: "📖",
     title: "Career Guidance",
     date: "May 31, 2025",
+    dateValue: "2025-05-31",
     type: "Offline",
     status: null,
     description: [],
@@ -139,6 +149,7 @@ const EVENTS = [
     icon: "",
     title: "Musical Skit Performance Against Narcotics",
     date: "May 18, 2025",
+    dateValue: "2025-05-18",
     type: "Offline",
     status: null,
     description: [],
@@ -152,6 +163,7 @@ const EVENTS = [
     icon: "",
     title: "KCYM Membership Day",
     date: "April 27, 2025 · 9:00 AM",
+    dateValue: "2025-04-27",
     type: "Offline",
     status: null,
     description: [
@@ -167,6 +179,7 @@ const EVENTS = [
     icon: "",
     title: "ലഹരി വിരുദ്ധ സൈക്കിൾ റാലി",
     date: "April 16, 2025",
+    dateValue: "2025-04-16",
     type: "Offline",
     status: null,
     description: [
@@ -183,6 +196,7 @@ const EVENTS = [
     icon: "",
     title: "മലയാറ്റൂർ തീർത്ഥാടനം",
     date: "April 13, 2025",
+    dateValue: "2025-04-13",
     type: "Offline",
     status: null,
     description: [
@@ -199,6 +213,7 @@ const EVENTS = [
     icon: "",
     title: "KCYM Pre-Membership Session",
     date: "April 12, 2025 · 6:30 PM",
+    dateValue: "2025-04-12",
     type: "Offline",
     status: null,
     description: [
@@ -215,6 +230,7 @@ const EVENTS = [
     icon: "🎍",
     title: "പിണ്ടി അലങ്കാര മത്സരം",
     date: "February 23, 2025 · 8:30 AM – 10:30 AM",
+    dateValue: "2025-02-23",
     type: "Offline",
     status: null,
     description: [
