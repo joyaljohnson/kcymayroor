@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events | KCYM Ayroor</title>
+<meta name="description" content="Highlights from KCYM Ayroor's events — competitions, campaigns, pilgrimages, and celebrations.">
+<link rel="icon" href="https://media.base44.com/images/public/69f1cb41579ddeee84426575/75f1d4c0e_logokcym.png">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/js/tailwind-config.js"></script>
+</head>
+<body class="font-body bg-background text-foreground">
+
+<div id="site-header"></div>
+
+<main class="pt-16">
+
+  <!-- HERO -->
+  <section class="py-20 sm:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div data-reveal="up">
+        <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days w-7 h-7 text-primary"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg>
+        </div>
+        <h1 class="font-heading font-black text-4xl sm:text-5xl text-foreground mb-4">Events</h1>
+        <p class="font-body text-muted-foreground text-lg max-w-xl mx-auto">Highlights from KCYM Ayroor's competitions, campaigns, pilgrimages, and celebrations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS LIST -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <div class="max-w-3xl mx-auto space-y-8" id="events-list"></div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/events-data.js"></script>
+<script>
+  const calendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-3.5 h-3.5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>`;
+  const imagesIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images w-4 h-4"><path d="M18 22H4a2 2 0 0 1-2-2V6"></path><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"></path><circle cx="12" cy="8" r="2"></circle><rect width="16" height="16" x="6" y="2" rx="2"></rect></svg>`;
+  const chevron = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4 accordion-chevron"><path d="m6 9 6 6 6-6"></path></svg>`;
+  const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-3.5 h-3.5 ml-1.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>`;
+
+  function renderEvents() {
+    const list = document.getElementById("events-list");
+    if (!list) return;
+
+    const html = EVENTS.map((ev, i) => {
+      const photosId = `photos-${ev.slug}`;
+      const cover = ev.images && ev.images[0] ? `assets/images/events/${ev.slug}/${ev.images[0]}` : null;
+
+      const badges = `
+        <span class="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-muted-foreground">${calendarIcon}${ev.date}</span>
+        ${ev.type ? `<span class="px-2.5 py-0.5 rounded-full bg-muted text-xs font-heading font-medium text-muted-foreground">${ev.type}</span>` : ""}
+        ${ev.status === "cancelled" ? `<span class="px-2.5 py-0.5 rounded-full bg-destructive/10 text-xs font-heading font-bold text-destructive uppercase tracking-wide">Cancelled</span>` : ""}
+      `;
+
+      const desc = (ev.description || []).map(p => `<p>${p}</p>`).join("");
+
+      const links = (ev.links || []).map(l => `
+        <a href="${l.href}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-heading font-semibold text-primary hover:text-primary/80 transition-colors">${l.label}${externalIcon}</a>
+      `).join("");
+
+      let resultBlock = "";
+      if (ev.resultBlock) {
+        const winners = ev.resultBlock.winners.map(w => `<li>${w}</li>`).join("");
+        const others = ev.resultBlock.others.map(o => `<li>${o}</li>`).join("");
+        resultBlock = `
+          <div class="mt-4 p-4 rounded-xl bg-secondary/10 border border-secondary/30">
+            <p class="font-heading font-bold text-xs uppercase tracking-wider text-foreground mb-2">🏆 ${ev.resultBlock.heading}</p>
+            <ul class="font-body text-sm text-foreground/80 space-y-1 list-disc list-inside mb-3">${winners}</ul>
+            <p class="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground mb-2">${ev.resultBlock.othersHeading}</p>
+            <ul class="font-body text-xs text-muted-foreground space-y-1 list-disc list-inside">${others}</ul>
+          </div>`;
+      }
+
+      const tags = (ev.tags || []).map(t => `<span class="px-2.5 py-0.5 rounded-full bg-muted text-xs font-heading font-medium text-muted-foreground">${t}</span>`).join("");
+
+      const photosToggle = ev.images && ev.images.length ? `
+        <button class="inline-flex items-center gap-2 text-sm font-heading font-semibold text-primary hover:text-primary/80 transition-colors mt-4" data-accordion-toggle="${photosId}" data-label-show="View Photos (${ev.images.length})" data-label-hide="Hide Photos">
+          ${imagesIcon}<span data-accordion-label>View Photos (${ev.images.length})</span>${chevron}
+        </button>
+        <div id="${photosId}" class="accordion-content">
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 pt-4">
+            ${ev.images.map(img => `
+              <a href="assets/images/events/${ev.slug}/${img}" target="_blank" rel="noopener noreferrer" class="block aspect-square rounded-lg overflow-hidden bg-muted">
+                <img src="assets/images/events/${ev.slug}/${img}" alt="${ev.title}" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+              </a>`).join("")}
+          </div>
+        </div>` : "";
+
+      return `
+      <article class="bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300" data-reveal="up" data-reveal-delay="${Math.min(i * 40, 300)}">
+        ${cover ? `
+        <div class="relative aspect-video overflow-hidden bg-muted">
+          <img src="${cover}" alt="${ev.title}" loading="lazy" class="w-full h-full object-cover">
+          ${ev.status === "cancelled" ? `<div class="absolute inset-0 bg-foreground/40 flex items-center justify-center"><span class="px-4 py-1.5 rounded-full bg-destructive text-white font-heading font-black text-sm uppercase tracking-widest -rotate-6 shadow-lg">Cancelled</span></div>` : ""}
+        </div>` : ""}
+        <div class="p-6 sm:p-7">
+          <div class="flex flex-wrap items-center gap-2 mb-3">${badges}</div>
+          <h2 class="font-heading font-bold text-xl text-foreground mb-3">${ev.icon ? ev.icon + " " : ""}${ev.title}</h2>
+          <div class="font-body text-sm text-muted-foreground leading-relaxed space-y-2">${desc}</div>
+          ${resultBlock}
+          ${tags ? `<div class="flex flex-wrap gap-2 mt-4">${tags}</div>` : ""}
+          ${links ? `<div class="flex flex-wrap gap-4 mt-4">${links}</div>` : ""}
+          ${photosToggle}
+        </div>
+      </article>`;
+    }).join("");
+
+    list.innerHTML = html;
+
+    if (typeof initScrollReveal === "function") initScrollReveal();
+    if (typeof initAccordions === "function") initAccordions();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => setTimeout(renderEvents, 0));
+</script>
+</body>
+</html>
