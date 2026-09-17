@@ -1,6 +1,22 @@
 // Event data — sourced from the KCYM Ayroor Notion events board
 const EVENTS = [
   {
+    slug: "the-awakening-chords",
+    icon: "",
+    title: "ദിവ്യകാരുണ്യാരാധന — The Awakening Chords",
+    date: "October 21, 2025",
+    dateValue: "2025-10-21",
+    type: "Offline",
+    status: null,
+    description: [
+      "St. Antony's Church Ayroor-ന്റെ ശതാബ്ദിയാഘോഷത്തിന്റെ ഭാഗമായി നടക്കുന്ന അഖണ്ഡ ജപമാലയുടെ പ്രാരംഭ ദിനത്തിൽ, മൂഴിക്കുളം ഫൊറോനയിലെ യുവജനങ്ങൾക്കായി അയിരൂർ കെ.സി.വൈ.എം ഒരു ദിവ്യകാരുണ്യാരാധന സംഘടിപ്പിച്ചു.",
+      "വൈകിട്ട് 7 മുതൽ 8 വരെ ബ. റോബിൻ ചിറ്റൂപറമ്പിൽ അച്ചന്റെ നേതൃത്വത്തിൽ നടത്തിയ ഈ ആരാധനയിൽ മൂഴിക്കുളം ഫൊറോനയിൽ നിന്ന് ഏകദേശം 64 യുവജനങ്ങൾ പങ്കെടുത്തു.",
+    ],
+    instagram: "https://www.instagram.com/p/DQHQOfJElfr/",
+    links: [],
+    images: [],
+  },
+  {
     slug: "kcym-trip-2025",
     icon: "",
     title: "KCYM TRIP 2025",

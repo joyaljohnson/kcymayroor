@@ -82,6 +82,7 @@
   const imagesIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images w-4 h-4"><path d="M18 22H4a2 2 0 0 1-2-2V6"></path><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"></path><circle cx="12" cy="8" r="2"></circle><rect width="16" height="16" x="6" y="2" rx="2"></rect></svg>`;
   const chevron = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4 accordion-chevron shrink-0"><path d="m6 9 6 6 6-6"></path></svg>`;
   const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-3.5 h-3.5 ml-1.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>`;
+  const instagramIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-3.5 h-3.5"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>`;
 
   const state = { type: "all", status: "all", sort: "date-desc" };
   const todayISO = new Date().toISOString().slice(0, 10);
@@ -109,12 +110,13 @@
     const cover = ev.images && ev.images[0] ? `assets/images/events/${ev.slug}/${ev.images[0]}` : null;
     const excerpt = (ev.description || [])[0] || null;
     const restDescription = (ev.description || []).slice(1);
-    const hasMore = restDescription.length || ev.resultBlock || (ev.tags && ev.tags.length) || (ev.links && ev.links.length) || (ev.images && ev.images.length);
+    const hasMore = restDescription.length || ev.resultBlock || (ev.tags && ev.tags.length) || (ev.links && ev.links.length) || (ev.images && ev.images.length) || ev.instagram;
 
     const badges = `
       <span class="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-muted-foreground">${calendarIcon}${ev.date}</span>
       ${ev.type ? `<span class="px-2.5 py-0.5 rounded-full bg-muted text-xs font-heading font-medium text-muted-foreground">${ev.type}</span>` : ""}
       ${ev.status === "cancelled" ? `<span class="px-2.5 py-0.5 rounded-full bg-destructive/10 text-xs font-heading font-bold text-destructive uppercase tracking-wide">Cancelled</span>` : ""}
+      ${ev.instagram ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-muted text-xs font-heading font-medium text-muted-foreground">${instagramIcon}Instagram</span>` : ""}
     `;
 
     let resultBlock = "";
@@ -144,6 +146,12 @@
         </div>
       </div>` : "";
 
+    const instagramEmbed = ev.instagram ? `
+      <div class="mt-4">
+        <p class="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-2">${instagramIcon}Instagram Post</p>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${ev.instagram}" data-instgrm-version="14" style="margin:0; max-width:100%;"></blockquote>
+      </div>` : "";
+
     return `
     <article class="bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col" data-reveal="up" data-reveal-delay="${Math.min(i * 40, 300)}">
       ${cover ? `<div class="relative aspect-video overflow-hidden bg-muted shrink-0">
@@ -168,6 +176,7 @@
           ${tags ? `<div class="flex flex-wrap gap-2 mt-4">${tags}</div>` : ""}
           ${links ? `<div class="flex flex-wrap gap-4 mt-4">${links}</div>` : ""}
           ${photos}
+          ${instagramEmbed}
         </div>` : ""}
       </div>
     </article>`;
@@ -187,7 +196,16 @@
 
     if (typeof initScrollReveal === "function") initScrollReveal();
     if (typeof initAccordions === "function") initAccordions();
+    processInstagramEmbeds();
   }
+
+  function processInstagramEmbeds() {
+    if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+  }
+  // Instagram's embed.js loads async — retry a couple of times in case it
+  // wasn't ready yet when a card with an embed first rendered.
+  setTimeout(processInstagramEmbeds, 500);
+  setTimeout(processInstagramEmbeds, 1500);
 
   function initFilterControls() {
     document.querySelectorAll("[data-type-filter]").forEach((btn) => {
@@ -215,5 +233,6 @@
     }, 0);
   });
 </script>
+<script async src="https://www.instagram.com/embed.js" onload="processInstagramEmbeds()"></script>
 </body>
 </html>
