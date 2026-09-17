@@ -14,7 +14,7 @@ const EVENTS = [
     ],
     instagram: "https://www.instagram.com/p/DQHQOfJElfr/",
     links: [],
-    images: [],
+    images: ["1.jpg"],
   },
   {
     slug: "kcym-trip-2025",
