@@ -146,10 +146,14 @@
         </div>
       </div>` : "";
 
+    // Rendered as an empty slot and hydrated with the real blockquote only after
+    // the accordion has finished opening — Instagram's embed.js measures the
+    // iframe's height once, right when it's created, so building it while the
+    // accordion is still collapsed (max-height: 0) permanently locks it at ~2px.
     const instagramEmbed = ev.instagram ? `
       <div class="mt-4">
         <p class="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-2">${instagramIcon}Instagram Post</p>
-        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${ev.instagram}" data-instgrm-version="14" style="margin:0; max-width:100%;"></blockquote>
+        <div class="instagram-embed-slot" data-instagram-url="${ev.instagram}" data-loaded="false"></div>
       </div>` : "";
 
     return `
@@ -196,16 +200,33 @@
 
     if (typeof initScrollReveal === "function") initScrollReveal();
     if (typeof initAccordions === "function") initAccordions();
-    processInstagramEmbeds();
+    initInstagramLazyLoad();
   }
 
   function processInstagramEmbeds() {
     if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
   }
-  // Instagram's embed.js loads async — retry a couple of times in case it
-  // wasn't ready yet when a card with an embed first rendered.
-  setTimeout(processInstagramEmbeds, 500);
-  setTimeout(processInstagramEmbeds, 1500);
+
+  // Hydrate each Instagram embed slot only once its accordion has actually
+  // opened (and finished animating), so Instagram measures a real height.
+  function initInstagramLazyLoad() {
+    document.querySelectorAll(".instagram-embed-slot").forEach((slot) => {
+      if (slot.dataset.bound === "1") return;
+      slot.dataset.bound = "1";
+      const details = slot.closest(".accordion-content");
+      const toggleBtn = document.querySelector(`[data-accordion-toggle="${details.id}"]`);
+      if (!toggleBtn) return;
+      toggleBtn.addEventListener("click", () => {
+        if (slot.dataset.loaded === "true") return;
+        if (!details.classList.contains("open")) return; // this click is closing it
+        slot.dataset.loaded = "true";
+        setTimeout(() => {
+          slot.innerHTML = `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${slot.dataset.instagramUrl}" data-instgrm-version="14" style="margin:0; max-width:100%;"></blockquote>`;
+          processInstagramEmbeds();
+        }, 400); // matches .accordion-content's max-height transition duration
+      });
+    });
+  }
 
   function initFilterControls() {
     document.querySelectorAll("[data-type-filter]").forEach((btn) => {

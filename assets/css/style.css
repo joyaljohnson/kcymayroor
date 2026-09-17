@@ -91,6 +91,17 @@ body {
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
+/* ---------- Instagram embeds ----------
+   Instagram's own embed.js is supposed to resize its iframe via postMessage
+   once the content loads, but that handshake is unreliable in a lot of
+   contexts and can leave the iframe stuck at ~2px tall. Force a sane
+   minimum so the embed is always visible either way. */
+.instagram-embed-slot { min-height: 200px; }
+.instagram-embed-slot iframe.instagram-media {
+  min-height: 650px !important;
+  width: 100% !important;
+}
+
 /* ---------- Filter pill ---------- */
 .filter-pill.active {
   background-color: hsl(var(--primary));
