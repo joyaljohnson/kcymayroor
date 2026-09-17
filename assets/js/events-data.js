@@ -1,5 +1,38 @@
 // Event data — sourced from the KCYM Ayroor Notion events board
+// (plus a few sourced directly from the @kcymayroor Instagram feed — see each event's `instagram` field)
 const EVENTS = [
+  {
+    slug: "onam-2026-oldage-home-visit",
+    icon: "",
+    title: "ഓണം — Kariyamparambu Jeevodaya Old Age Home Visit",
+    date: "September 6, 2026",
+    dateValue: "2026-09-06",
+    type: "Offline",
+    status: null,
+    description: [
+      "ഇത്തവണത്തെ ഓണാഘോഷം KCYM Ayroor കരിയാംപറമ്പ് ജീവോദയ ഓൾഡേജ് ഹോമിലെ താമസക്കാർക്കൊപ്പം ചെലവഴിച്ചു.",
+      "സ്നേഹസമ്മാനങ്ങളും ഗെയിമുകളും ഓണസദ്യയും പങ്കുവെച്ച്, പുഞ്ചിരിയും സന്തോഷവും നിറഞ്ഞൊരു ദിനമായിരുന്നു ഇത്.",
+    ],
+    instagram: "https://www.instagram.com/kcymayroor/reel/Dc9BThcSFxt/",
+    links: [],
+    images: ["1.jpg"],
+  },
+  {
+    slug: "way-of-the-cross-2026",
+    icon: "",
+    title: "കുരിശിന്റെ വഴി — Way of the Cross (Good Friday)",
+    date: "April 3, 2026",
+    dateValue: "2026-04-03",
+    type: "Offline",
+    status: null,
+    description: [
+      "ദുഃഖവെള്ളിയോട് അനുബന്ധിച്ച് കെ.സി.വൈ.എം കുത്തിയത്തോട് യൂണിറ്റും അയിരൂർ യൂണിറ്റും സംയുക്തമായി ചേർന്ന് ഒരു കുരിശിന്റെ വഴി നടത്തുകയുണ്ടായി.",
+      "Photo credit: @ft.jonez",
+    ],
+    instagram: "https://www.instagram.com/kcymayroor/reel/DWtGP9SEh5m/",
+    links: [],
+    images: ["1.jpg"],
+  },
   {
     slug: "the-awakening-chords",
     icon: "",
