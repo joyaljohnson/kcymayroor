@@ -12,22 +12,18 @@
     '  display: block;',
     '  width: 100%;',
     '  max-width: 560px;',
-    '  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;',
-    '  --bg: #E7ECF5; --card: #FFFFFF; --ink: #232A3D; --sub: #7986A6;',
-    '  --icon: #9AA4BC; --icon-hover: #5B6684; --ring: rgba(35,42,61,0.07);',
-    '  --shadow: rgba(35,42,61,0.12); --btn-bg: #FFFFFF; --focus: #6C7FE0;',
+    '  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;',
+    '  --bg: #FFFFFF; --card: #FFFFFF; --ink: #1D2530; --sub: #6B7280;',
+    '  --icon: #9CA3AF; --icon-hover: #374151; --ring: rgba(0,0,0,0.06);',
+    '  --shadow: rgba(0,0,0,0.12); --btn-bg: #FFFFFF; --focus: #111827;',
     '}',
-    '@media (prefers-color-scheme: dark) {',
-    '  :host(:not([theme="light"])) {',
-    '    --bg: #12141d; --card: #1B1F2E; --ink: #E8EAF3; --sub: #8C97BC;',
-    '    --icon: #737E9E; --icon-hover: #AAB4D4; --ring: rgba(255,255,255,0.06);',
-    '    --shadow: rgba(0,0,0,0.45); --btn-bg: #1F2434; --focus: #8C9AF0;',
-    '  }',
-    '}',
+    /* Intentionally no prefers-color-scheme override — the widget always
+       stays on the site's light white/black/grey palette regardless of the
+       visitor's OS theme, matching the rest of the (light-only) site. */
     ':host([theme="dark"]) {',
-    '  --bg: #12141d; --card: #1B1F2E; --ink: #E8EAF3; --sub: #8C97BC;',
-    '  --icon: #737E9E; --icon-hover: #AAB4D4; --ring: rgba(255,255,255,0.06);',
-    '  --shadow: rgba(0,0,0,0.45); --btn-bg: #1F2434; --focus: #8C9AF0;',
+    '  --bg: #0A0A0A; --card: #111111; --ink: #F5F5F5; --sub: #A3A3A3;',
+    '  --icon: #8A8A8A; --icon-hover: #D4D4D4; --ring: rgba(255,255,255,0.08);',
+    '  --shadow: rgba(0,0,0,0.5); --btn-bg: #1A1A1A; --focus: #FFFFFF;',
     '}',
     '* { box-sizing: border-box; }',
     '.stage { display: flex; flex-direction: column; align-items: center; gap: 22px; }',
@@ -56,7 +52,7 @@
     '  color: var(--ink); max-width: 420px; margin: 0;',
     '}',
     '.ref {',
-    '  font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 600;',
+    '  font-family: "Lora", Georgia, serif; font-style: italic; font-weight: 600;',
     '  font-size: 0.95rem; color: var(--sub); margin: 0;',
     '}',
     '.refresh-btn {',
@@ -130,11 +126,8 @@
       super();
       var shadow = this.attachShadow({ mode: 'open' });
 
-      var fontLink = document.createElement('link');
-      fontLink.rel = 'stylesheet';
-      fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
-      shadow.appendChild(fontLink);
-
+      // Montserrat/Lora are already loaded page-wide (see assets/css/style.css);
+      // font loading isn't shadow-scoped, so no separate <link> is needed here.
       var style = document.createElement('style');
       style.textContent = STYLE;
       shadow.appendChild(style);
