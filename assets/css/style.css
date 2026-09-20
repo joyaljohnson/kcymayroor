@@ -107,8 +107,12 @@ body {
   border-radius: 9999px;
   position: relative;
 }
-.verse-icon-open { opacity: 0; }
-.verse-icon-closed { opacity: 1; }
+.verse-icon-closed,
+.verse-icon-open {
+  transition: opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1), transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.verse-icon-open { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+.verse-icon-closed { opacity: 1; transform: rotate(0deg) scale(1); }
 #verse-trigger-wrap:hover .verse-trigger,
 #verse-trigger-wrap.open .verse-trigger {
   border-radius: 10px;
@@ -116,10 +120,15 @@ body {
 #verse-trigger-wrap:hover .verse-icon-closed,
 #verse-trigger-wrap.open .verse-icon-closed {
   opacity: 0;
+  transform: rotate(90deg) scale(0.6);
 }
 #verse-trigger-wrap:hover .verse-icon-open,
 #verse-trigger-wrap.open .verse-icon-open {
   opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .verse-icon-closed, .verse-icon-open { transition: opacity 0.15s linear; transform: none !important; }
 }
 .verse-popover {
   position: absolute;
