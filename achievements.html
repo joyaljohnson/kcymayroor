@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievements | KCYM Ayroor</title>
+<meta name="description" content="Awards and honors won by KCYM Ayroor members at parish, forane, archdiocese, and state-level competitions.">
+<link rel="icon" href="https://media.base44.com/images/public/69f1cb41579ddeee84426575/75f1d4c0e_logokcym.png">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/js/tailwind-config.js"></script>
+</head>
+<body class="font-body bg-background text-foreground">
+
+<div id="site-header"></div>
+
+<main class="pt-16">
+
+  <!-- HERO -->
+  <section class="py-20 sm:py-28 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div data-reveal="up">
+        <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy w-7 h-7 text-primary"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+        </div>
+        <h1 class="font-heading font-black text-4xl sm:text-5xl text-foreground mb-4">Achievements</h1>
+        <p class="font-body text-muted-foreground text-lg max-w-xl mx-auto">Awards and honors won by KCYM Ayroor members at parish, forane, archdiocese, and state-level competitions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <section class="pt-12 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-center gap-2" id="category-filter-group">
+        <span class="text-xs font-heading font-semibold text-muted-foreground uppercase tracking-wider mr-1">Filter:</span>
+        <button type="button" data-category-filter="all" class="filter-pill active px-4 py-1.5 rounded-full border border-border text-xs font-heading font-semibold transition-colors">All</button>
+        <button type="button" data-category-filter="Arts & Culture" class="filter-pill px-4 py-1.5 rounded-full border border-border text-xs font-heading font-semibold transition-colors hover:bg-muted">Arts &amp; Culture</button>
+        <button type="button" data-category-filter="Sports" class="filter-pill px-4 py-1.5 rounded-full border border-border text-xs font-heading font-semibold transition-colors hover:bg-muted">Sports</button>
+        <button type="button" data-category-filter="Literary & Speech" class="filter-pill px-4 py-1.5 rounded-full border border-border text-xs font-heading font-semibold transition-colors hover:bg-muted">Literary &amp; Speech</button>
+      </div>
+      <p class="text-xs text-muted-foreground font-body mt-4" id="achievements-count"></p>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS GRID -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="achievements-list"></div>
+      <p id="achievements-empty" class="hidden text-center text-muted-foreground font-body py-16">No achievements match this filter.</p>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/verse-widget.js?v=3"></script>
+<script src="assets/js/achievements-data.js"></script>
+<script>
+  const calendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-3.5 h-3.5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>`;
+  const userIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-3.5 h-3.5 shrink-0"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`;
+  const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-3.5 h-3.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>`;
+
+  const state = { category: "all" };
+
+  const medalByPlace = { "1st": "🥇", "2nd": "🥈", "3rd": "🥉" };
+
+  function getFilteredAchievements() {
+    let list = ACHIEVEMENTS.filter((a) => state.category === "all" || a.category === state.category);
+    return list.slice().sort((a, b) => b.dateValue.localeCompare(a.dateValue));
+  }
+
+  function achievementCardHTML(a, i) {
+    const medal = medalByPlace[a.place] || "🏅";
+    return `
+    <article class="bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col" data-reveal="up" data-reveal-delay="${Math.min(i * 40, 300)}">
+      <div class="relative aspect-square overflow-hidden bg-muted shrink-0">
+        <img src="assets/images/achievements/${a.image}" alt="${a.title}" loading="lazy" class="w-full h-full object-cover">
+        <div class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-background/90 backdrop-blur-sm shadow">
+          <span class="text-sm leading-none">${medal}</span>
+          <span class="text-xs font-heading font-bold text-foreground">${a.place}</span>
+        </div>
+        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/90 backdrop-blur-sm text-xs font-heading font-medium text-muted-foreground shadow">${a.category}</span>
+      </div>
+      <div class="p-5 sm:p-6 flex flex-col flex-1">
+        <span class="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-muted-foreground mb-2">${calendarIcon}${a.date}</span>
+        <h2 class="font-heading font-bold text-lg text-foreground mb-1.5 leading-snug">${a.title}</h2>
+        <p class="font-body text-sm text-muted-foreground mb-1">${a.event}</p>
+        <p class="inline-flex items-center gap-1.5 font-heading text-sm font-semibold text-primary mb-4">${userIcon}${a.recipient}</p>
+        <div class="mt-auto pt-2 border-t border-border/50">
+          <a href="${a.instagram}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-primary hover:text-primary/80 transition-colors">View on Instagram${externalIcon}</a>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function renderAchievements() {
+    const list = document.getElementById("achievements-list");
+    const empty = document.getElementById("achievements-empty");
+    const count = document.getElementById("achievements-count");
+    if (!list) return;
+
+    const achievements = getFilteredAchievements();
+    list.innerHTML = achievements.map((a, i) => achievementCardHTML(a, i)).join("");
+    list.classList.toggle("hidden", achievements.length === 0);
+    empty.classList.toggle("hidden", achievements.length !== 0);
+    count.textContent = `Showing ${achievements.length} of ${ACHIEVEMENTS.length} achievements`;
+
+    if (typeof initScrollReveal === "function") initScrollReveal();
+  }
+
+  function initFilterControls() {
+    document.querySelectorAll("[data-category-filter]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.category = btn.getAttribute("data-category-filter");
+        document.querySelectorAll("[data-category-filter]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderAchievements();
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      renderAchievements();
+      initFilterControls();
+    }, 0);
+  });
+</script>
+</body>
+</html>
