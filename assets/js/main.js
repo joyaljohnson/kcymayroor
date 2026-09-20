@@ -103,6 +103,34 @@ function initAccordions() {
   });
 }
 
+function initVerseTrigger() {
+  const wrap = document.getElementById("verse-trigger-wrap");
+  const btn = document.getElementById("verse-trigger");
+  if (!wrap || !btn || wrap.dataset.bound === "1") return;
+  wrap.dataset.bound = "1";
+
+  function setOpen(open) {
+    wrap.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  // Hover-to-open is handled purely in CSS (desktop/mouse). This click
+  // handler is the fallback for touch devices, which have no hover state,
+  // and also lets anyone toggle it closed again after opening via hover+click.
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setOpen(!wrap.classList.contains("open"));
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!wrap.contains(e.target)) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+}
+
 function initMembershipDeepLink() {
   const params = new URLSearchParams(window.location.search);
   if (params.get("membership") === "open") {
@@ -124,6 +152,7 @@ async function initSite() {
   initNav();
   initScrollReveal();
   initAccordions();
+  initVerseTrigger();
   initMembershipDeepLink();
 }
 

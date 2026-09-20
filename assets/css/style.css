@@ -102,6 +102,52 @@ body {
   width: 100% !important;
 }
 
+/* ---------- Verse of the Day nav trigger ---------- */
+.verse-trigger {
+  border-radius: 9999px;
+  position: relative;
+}
+.verse-icon-open { opacity: 0; }
+.verse-icon-closed { opacity: 1; }
+#verse-trigger-wrap:hover .verse-trigger,
+#verse-trigger-wrap.open .verse-trigger {
+  border-radius: 10px;
+}
+#verse-trigger-wrap:hover .verse-icon-closed,
+#verse-trigger-wrap.open .verse-icon-closed {
+  opacity: 0;
+}
+#verse-trigger-wrap:hover .verse-icon-open,
+#verse-trigger-wrap.open .verse-icon-open {
+  opacity: 1;
+}
+.verse-popover {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: -8px;
+  width: min(300px, calc(100vw - 2rem));
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 16px;
+  box-shadow: 0 14px 34px -14px rgba(0,0,0,0.22);
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.97);
+  transform-origin: top right;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  z-index: 60;
+}
+#verse-trigger-wrap:hover .verse-popover,
+#verse-trigger-wrap.open .verse-popover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+@media (max-width: 480px) {
+  .verse-popover { right: -3.5rem; }
+}
+
 /* ---------- Filter pill ---------- */
 .filter-pill.active {
   background-color: hsl(var(--primary));
