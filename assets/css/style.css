@@ -104,7 +104,7 @@ body {
 
 /* ---------- Verse of the Day nav trigger ---------- */
 .verse-trigger {
-  border-radius: 9999px;
+  border-radius: 16px;
   position: relative;
 }
 .verse-icon-closed,
