@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focal Point Picker (dev tool)</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #f4f4f5; color: #18181b; }
+  header { position: sticky; top: 0; z-index: 10; background: #18181b; color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  header h1 { font-size: 16px; margin: 0; font-weight: 700; }
+  header p { font-size: 12px; margin: 2px 0 0; color: #a1a1aa; }
+  button { font: inherit; cursor: pointer; border: none; border-radius: 8px; padding: 10px 16px; font-weight: 600; font-size: 13px; }
+  .btn-primary { background: #aa1818; color: #fff; }
+  .btn-primary:hover { background: #8f1414; }
+  .btn-ghost { background: #27272a; color: #fff; }
+  .btn-ghost:hover { background: #3f3f46; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
+  .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .card h2 { font-size: 14px; margin: 0; padding: 12px 14px 0; }
+  .card .meta { font-size: 11px; color: #71717a; padding: 2px 14px 10px; }
+  .box { position: relative; width: 100%; height: 320px; overflow: hidden; background: #e4e4e7; cursor: grab; user-select: none; touch-action: none; }
+  .box.dragging { cursor: grabbing; }
+  .box img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; display: block; }
+  .box .crosshair { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border: 2px solid #fff; border-radius: 999px; box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.4); pointer-events: none; }
+  .controls { padding: 10px 14px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .pos-readout { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: #52525b; }
+  .reset-btn { background: #f4f4f5; color: #52525b; padding: 6px 10px; border-radius: 6px; font-size: 11px; }
+  .reset-btn:hover { background: #e4e4e7; }
+  .no-image { padding: 40px 14px; text-align: center; color: #a1a1aa; font-size: 13px; }
+  .changed-dot { display: inline-block; width: 7px; height: 7px; border-radius: 999px; background: #16a34a; margin-left: 6px; vertical-align: middle; }
+  .instructions { max-width: 1200px; margin: 0 auto; padding: 16px 24px 0; font-size: 13px; color: #52525b; line-height: 1.5; }
+  .instructions code { background: #e4e4e7; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Event Photo Focal Point Picker</h1>
+    <p id="status-text">Loading events…</p>
+  </div>
+  <div style="display:flex; gap:8px;">
+    <button class="btn-ghost" id="reset-all-btn">Reset All</button>
+    <button class="btn-primary" id="download-btn">Download updated events-data.js</button>
+  </div>
+</header>
+
+<p class="instructions">
+  Drag any photo below to choose what part of it shows when the card crops it to fill the box (the box is the same size the live Events page uses). The white dot marks your chosen focal point. When you're happy, click <strong>Download updated events-data.js</strong> — send that downloaded file back and it'll replace the one on the site. Photos you haven't touched are left as centered (<code>50% 50%</code>) and are skipped in the download diff summary.
+</p>
+
+<main id="grid"></main>
+
+<script src="assets/js/events-data.js"></script>
+<script>
+  const changed = new Set();
+
+  function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+
+  function makeCard(ev) {
+    const cover = ev.images && ev.images[0] ? `assets/images/events/${ev.slug}/${ev.images[0]}` : null;
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const h2 = document.createElement("h2");
+    h2.innerHTML = `${ev.title} <span class="changed-dot" style="display:none;"></span>`;
+    card.appendChild(h2);
+
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.textContent = `${ev.date} · ${ev.slug}`;
+    card.appendChild(meta);
+
+    if (!cover) {
+      const empty = document.createElement("div");
+      empty.className = "no-image";
+      empty.textContent = "No cover photo for this event.";
+      card.appendChild(empty);
+      return card;
+    }
+
+    let [posX, posY] = (ev.focal || "50% 50%").split(" ").map((s) => parseFloat(s));
+    if (Number.isNaN(posX)) posX = 50;
+    if (Number.isNaN(posY)) posY = 50;
+
+    const box = document.createElement("div");
+    box.className = "box";
+
+    const img = document.createElement("img");
+    img.src = cover;
+    img.alt = ev.title;
+    box.appendChild(img);
+
+    const crosshair = document.createElement("div");
+    crosshair.className = "crosshair";
+    box.appendChild(crosshair);
+
+    const controls = document.createElement("div");
+    controls.className = "controls";
+    const readout = document.createElement("span");
+    readout.className = "pos-readout";
+    controls.appendChild(readout);
+    const resetBtn = document.createElement("button");
+    resetBtn.className = "reset-btn";
+    resetBtn.textContent = "Reset";
+    controls.appendChild(resetBtn);
+
+    function render() {
+      img.style.objectPosition = `${posX}% ${posY}%`;
+      crosshair.style.left = `${posX}%`;
+      crosshair.style.top = `${posY}%`;
+      readout.textContent = `${Math.round(posX)}% ${Math.round(posY)}%`;
+      ev.focal = `${Math.round(posX)}% ${Math.round(posY)}%`;
+      const isChanged = Math.round(posX) !== 50 || Math.round(posY) !== 50;
+      card.querySelector(".changed-dot").style.display = isChanged ? "inline-block" : "none";
+      if (isChanged) changed.add(ev.slug); else changed.delete(ev.slug);
+      updateStatus();
+    }
+
+    let dragging = false;
+    let startClientX = 0, startClientY = 0, startX = 0, startY = 0;
+
+    function onPointerDown(e) {
+      dragging = true;
+      box.classList.add("dragging");
+      const p = e.touches ? e.touches[0] : e;
+      startClientX = p.clientX;
+      startClientY = p.clientY;
+      startX = posX;
+      startY = posY;
+      e.preventDefault();
+    }
+    function onPointerMove(e) {
+      if (!dragging) return;
+      const p = e.touches ? e.touches[0] : e;
+      const rect = box.getBoundingClientRect();
+      const dxPct = ((p.clientX - startClientX) / rect.width) * 100;
+      const dyPct = ((p.clientY - startClientY) / rect.height) * 100;
+      // Dragging the photo right/down should reveal more of its left/top —
+      // i.e. the focal point (what stays centered) moves opposite the drag.
+      posX = clamp(startX - dxPct, 0, 100);
+      posY = clamp(startY - dyPct, 0, 100);
+      render();
+    }
+    function onPointerUp() {
+      dragging = false;
+      box.classList.remove("dragging");
+    }
+
+    box.addEventListener("mousedown", onPointerDown);
+    box.addEventListener("touchstart", onPointerDown, { passive: false });
+    window.addEventListener("mousemove", onPointerMove);
+    window.addEventListener("touchmove", onPointerMove, { passive: false });
+    window.addEventListener("mouseup", onPointerUp);
+    window.addEventListener("touchend", onPointerUp);
+
+    resetBtn.addEventListener("click", () => {
+      posX = 50; posY = 50;
+      render();
+    });
+
+    render();
+    card.appendChild(box);
+    card.appendChild(controls);
+    return card;
+  }
+
+  function updateStatus() {
+    document.getElementById("status-text").textContent =
+      `${EVENTS.length} events loaded — ${changed.size} photo${changed.size === 1 ? "" : "s"} repositioned`;
+  }
+
+  function renderGrid() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    EVENTS.forEach((ev) => grid.appendChild(makeCard(ev)));
+    updateStatus();
+  }
+
+  document.getElementById("reset-all-btn").addEventListener("click", () => {
+    if (!confirm("Reset every photo back to centered (50% 50%)?")) return;
+    EVENTS.forEach((ev) => { ev.focal = "50% 50%"; });
+    changed.clear();
+    renderGrid();
+  });
+
+  document.getElementById("download-btn").addEventListener("click", () => {
+    const cleaned = EVENTS.map((ev) => {
+      const copy = Object.assign({}, ev);
+      if (copy.focal === "50% 50%") delete copy.focal;
+      return copy;
+    });
+    const content =
+      "// Events shown on events.html — sourced from the KCYM Ayroor Notion board and Instagram.\n" +
+      "// \"focal\" (optional) is a CSS object-position value set via focal-picker.html,\n" +
+      "// controlling which part of the cover photo stays visible when it's cropped to fill the card.\n" +
+      "const EVENTS = " + JSON.stringify(cleaned, null, 2) + ";\n";
+    const blob = new Blob([content], { type: "text/javascript" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "events-data.js";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  renderGrid();
+</script>
+</body>
+</html>

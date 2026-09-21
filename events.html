@@ -77,7 +77,7 @@
 
 <script src="assets/js/main.js?v=2"></script>
 <script src="assets/js/verse-widget.js?v=3"></script>
-<script src="assets/js/events-data.js"></script>
+<script src="assets/js/events-data.js?v=2"></script>
 <script>
   const calendarIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar w-3.5 h-3.5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>`;
   const imagesIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images w-4 h-4"><path d="M18 22H4a2 2 0 0 1-2-2V6"></path><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"></path><circle cx="12" cy="8" r="2"></circle><rect width="16" height="16" x="6" y="2" rx="2"></rect></svg>`;
@@ -141,8 +141,8 @@
         <p class="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-muted-foreground uppercase tracking-wider mb-2">${imagesIcon}Photos (${ev.images.length})</p>
         <div class="grid grid-cols-3 gap-2">
           ${ev.images.map((img) => `
-            <a href="assets/images/events/${ev.slug}/${img}" target="_blank" rel="noopener noreferrer" class="block aspect-square rounded-lg overflow-hidden bg-muted flex items-center justify-center">
-              <img src="assets/images/events/${ev.slug}/${img}" alt="${ev.title}" loading="lazy" class="max-w-full max-h-full w-auto h-auto object-contain hover:scale-105 transition-transform duration-300">
+            <a href="assets/images/events/${ev.slug}/${img}" target="_blank" rel="noopener noreferrer" class="block aspect-square rounded-lg overflow-hidden bg-muted">
+              <img src="assets/images/events/${ev.slug}/${img}" alt="${ev.title}" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
             </a>`).join("")}
         </div>
       </div>` : "";
@@ -159,8 +159,8 @@
 
     return `
     <article class="bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col" data-reveal="up" data-reveal-delay="${Math.min(i * 40, 300)}">
-      ${cover ? `<div class="relative h-80 overflow-hidden bg-muted shrink-0 flex items-center justify-center">
-        <img src="${cover}" alt="${ev.title}" loading="lazy" class="max-w-full max-h-full w-auto h-auto object-contain">
+      ${cover ? `<div class="relative h-80 overflow-hidden bg-muted shrink-0">
+        <img src="${cover}" alt="${ev.title}" loading="lazy" class="w-full h-full object-cover" style="object-position: ${ev.focal || "50% 50%"};">
         ${ev.status === "cancelled" ? `<div class="absolute inset-0 bg-foreground/40 flex items-center justify-center"><span class="px-4 py-1.5 rounded-full bg-destructive text-white font-heading font-black text-sm uppercase tracking-widest -rotate-6 shadow-lg">Cancelled</span></div>` : ""}
       </div>` : ""}
       <div class="p-5 sm:p-6 flex flex-col flex-1">
