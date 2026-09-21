@@ -16,9 +16,9 @@
  *    submissions Drive folder for the generated PDF.
  */
 
-// ====== CONFIGURATION — fill these in ======
-var TEMPLATE_DOC_ID = 'PUT_TEMPLATE_GOOGLE_DOC_ID_HERE';
-var SUBMISSIONS_FOLDER_ID = 'PUT_DRIVE_FOLDER_ID_HERE';
+// ====== CONFIGURATION ======
+var TEMPLATE_DOC_ID = '1s6-Uv0lFipgDHmPMK3L5HLh_NH_g41QiU1T3dD8n1cE';
+var SUBMISSIONS_FOLDER_ID = '1-k6wpXr8gVbbfE7sU1TPzUdxlTDk2II4';
 
 function onFormSubmit(e) {
   var responses = e.namedValues; // { "Question Title": ["answer"], ... }
