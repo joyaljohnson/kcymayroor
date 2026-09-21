@@ -131,6 +131,32 @@ function initVerseTrigger() {
   });
 }
 
+function applyLanguage(lang) {
+  const dict = (typeof I18N !== "undefined" && I18N[lang]) || {};
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key]) el.textContent = dict[key];
+  });
+  const toggle = document.getElementById("lang-toggle");
+  if (toggle) toggle.textContent = lang === "ml" ? "മല" : "EN";
+  document.documentElement.setAttribute("lang", lang === "ml" ? "ml" : "en");
+}
+
+function initLanguageToggle() {
+  const btn = document.getElementById("lang-toggle");
+  if (!btn || btn.dataset.bound === "1") return;
+  btn.dataset.bound = "1";
+
+  const stored = localStorage.getItem("lang") || "en";
+  applyLanguage(stored);
+
+  btn.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("lang") === "ml" ? "en" : "ml";
+    localStorage.setItem("lang", next);
+    applyLanguage(next);
+  });
+}
+
 function syncVerseWidgetsTheme(isDark) {
   document.querySelectorAll("daily-verse-widget").forEach((el) => {
     if (isDark) el.setAttribute("theme", "dark");
@@ -175,6 +201,7 @@ async function initSite() {
   initAccordions();
   initVerseTrigger();
   initThemeToggle();
+  initLanguageToggle();
   initMembershipDeepLink();
 }
 

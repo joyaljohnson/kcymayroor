@@ -10,17 +10,18 @@
       </a>
 
       <div class="hidden lg:flex items-center gap-1">
-        <a data-nav-link="index" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="index.html">Home</a>
-        <a data-nav-link="about" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="about.html">About</a>
-        <a data-nav-link="leadership" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="leadership.html">Leadership</a>
-        <a data-nav-link="events" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="events.html">Events</a>
-        <a data-nav-link="achievements" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="achievements.html">Achievements</a>
+        <a data-nav-link="index" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="index.html"><span data-i18n="nav-home">Home</span></a>
+        <a data-nav-link="about" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="about.html"><span data-i18n="nav-about">About</span></a>
+        <a data-nav-link="leadership" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="leadership.html"><span data-i18n="nav-leadership">Leadership</span></a>
+        <a data-nav-link="events" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="events.html"><span data-i18n="nav-events">Events</span></a>
+        <a data-nav-link="achievements" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="achievements.html"><span data-i18n="nav-achievements">Achievements</span></a>
         <a data-nav-link="youturn" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="youturn.html">YOUTURN</a>
-        <a data-nav-link="resources" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="resources.html">Resources</a>
-        <a data-nav-link="parish" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="parish.html">Parish</a>
+        <a data-nav-link="resources" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="resources.html"><span data-i18n="nav-resources">Resources</span></a>
+        <a data-nav-link="parish" class="px-3.5 py-2 rounded-lg text-sm font-heading font-medium transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted" href="parish.html"><span data-i18n="nav-parish">Parish</span></a>
       </div>
 
       <div class="flex items-center gap-3">
+        <button id="lang-toggle" class="lang-toggle h-8 px-2.5 flex items-center justify-center rounded-full text-foreground text-xs font-heading font-semibold transition-colors duration-200 hover:bg-primary/5" aria-label="Switch language">EN</button>
         <button id="theme-toggle" class="theme-toggle w-8 h-8 flex items-center justify-center rounded-full text-foreground transition-colors duration-300 hover:bg-primary/5" aria-label="Toggle dark mode">
           <svg class="theme-icon-sun w-3.5 h-3.5 absolute inset-0 m-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
           <svg class="theme-icon-moon w-3.5 h-3.5 absolute inset-0 m-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
@@ -35,7 +36,7 @@
           </div>
         </div>
         <a href="resources.html?membership=open">
-          <button class="items-center justify-center gap-2 whitespace-nowrap transition-colors shadow h-8 rounded-md px-3 text-xs hidden sm:flex font-heading font-semibold bg-primary hover:bg-primary/90 text-primary-foreground">Join Us</button>
+          <button class="items-center justify-center gap-2 whitespace-nowrap transition-colors shadow h-8 rounded-md px-3 text-xs hidden sm:flex font-heading font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"><span data-i18n="join-us">Join Us</span></button>
         </a>
         <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors" aria-label="Toggle menu">
           <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-5 h-5"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
@@ -47,16 +48,16 @@
 
   <div id="mobile-menu-panel" class="lg:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl">
     <div class="px-4 py-3 space-y-1">
-      <a data-nav-link="index" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="index.html">Home</a>
-      <a data-nav-link="about" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="about.html">About</a>
-      <a data-nav-link="leadership" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="leadership.html">Leadership</a>
-      <a data-nav-link="events" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="events.html">Events</a>
-      <a data-nav-link="achievements" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="achievements.html">Achievements</a>
+      <a data-nav-link="index" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="index.html"><span data-i18n="nav-home">Home</span></a>
+      <a data-nav-link="about" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="about.html"><span data-i18n="nav-about">About</span></a>
+      <a data-nav-link="leadership" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="leadership.html"><span data-i18n="nav-leadership">Leadership</span></a>
+      <a data-nav-link="events" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="events.html"><span data-i18n="nav-events">Events</span></a>
+      <a data-nav-link="achievements" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="achievements.html"><span data-i18n="nav-achievements">Achievements</span></a>
       <a data-nav-link="youturn" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="youturn.html">YOUTURN</a>
-      <a data-nav-link="resources" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="resources.html">Resources</a>
-      <a data-nav-link="parish" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="parish.html">Parish</a>
+      <a data-nav-link="resources" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="resources.html"><span data-i18n="nav-resources">Resources</span></a>
+      <a data-nav-link="parish" class="block px-4 py-2.5 rounded-lg text-sm font-heading font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted" href="parish.html"><span data-i18n="nav-parish">Parish</span></a>
       <a href="resources.html?membership=open">
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm transition-colors text-primary-foreground shadow h-9 px-4 py-2 w-full mt-2 font-heading font-semibold bg-primary hover:bg-primary/90">Join Us</button>
+        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm transition-colors text-primary-foreground shadow h-9 px-4 py-2 w-full mt-2 font-heading font-semibold bg-primary hover:bg-primary/90"><span data-i18n="join-us">Join Us</span></button>
       </a>
     </div>
   </div>
