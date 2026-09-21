@@ -1,311 +1,405 @@
-// Event data — sourced from the KCYM Ayroor Notion events board
-// (plus a few sourced directly from the @kcymayroor Instagram feed — see each event's `instagram` field)
+// Events shown on events.html — sourced from the KCYM Ayroor Notion board and Instagram.
+// "focal" (optional) is a CSS object-position value set via focal-picker.html,
+// controlling which part of the cover photo stays visible when it's cropped to fill the card.
 const EVENTS = [
   {
-    slug: "onam-2026-oldage-home-visit",
-    icon: "",
-    title: "ഓണം — Kariyamparambu Jeevodaya Old Age Home Visit",
-    date: "September 6, 2026",
-    dateValue: "2026-09-06",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "onam-2026-oldage-home-visit",
+    "icon": "",
+    "title": "ഓണം — Kariyamparambu Jeevodaya Old Age Home Visit",
+    "date": "September 6, 2026",
+    "dateValue": "2026-09-06",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "ഇത്തവണത്തെ ഓണാഘോഷം KCYM Ayroor കരിയാംപറമ്പ് ജീവോദയ ഓൾഡേജ് ഹോമിലെ താമസക്കാർക്കൊപ്പം ചെലവഴിച്ചു.",
-      "സ്നേഹസമ്മാനങ്ങളും ഗെയിമുകളും ഓണസദ്യയും പങ്കുവെച്ച്, പുഞ്ചിരിയും സന്തോഷവും നിറഞ്ഞൊരു ദിനമായിരുന്നു ഇത്.",
+      "സ്നേഹസമ്മാനങ്ങളും ഗെയിമുകളും ഓണസദ്യയും പങ്കുവെച്ച്, പുഞ്ചിരിയും സന്തോഷവും നിറഞ്ഞൊരു ദിനമായിരുന്നു ഇത്."
     ],
-    instagram: "https://www.instagram.com/kcymayroor/reel/Dc9BThcSFxt/",
-    links: [],
-    images: ["1.jpg"],
+    "instagram": "https://www.instagram.com/kcymayroor/reel/Dc9BThcSFxt/",
+    "links": [],
+    "images": [
+      "1.jpg"
+    ],
+    "focal": "36% 41%"
   },
   {
-    slug: "way-of-the-cross-2026",
-    icon: "",
-    title: "കുരിശിന്റെ വഴി — Way of the Cross (Good Friday)",
-    date: "April 3, 2026",
-    dateValue: "2026-04-03",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "way-of-the-cross-2026",
+    "icon": "",
+    "title": "കുരിശിന്റെ വഴി — Way of the Cross (Good Friday)",
+    "date": "April 3, 2026",
+    "dateValue": "2026-04-03",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "ദുഃഖവെള്ളിയോട് അനുബന്ധിച്ച് കെ.സി.വൈ.എം കുത്തിയത്തോട് യൂണിറ്റും അയിരൂർ യൂണിറ്റും സംയുക്തമായി ചേർന്ന് ഒരു കുരിശിന്റെ വഴി നടത്തുകയുണ്ടായി.",
-      "Photo credit: @ft.jonez",
+      "Photo credit: @ft.jonez"
     ],
-    instagram: "https://www.instagram.com/kcymayroor/reel/DWtGP9SEh5m/",
-    links: [],
-    images: ["1.jpg"],
+    "instagram": "https://www.instagram.com/kcymayroor/reel/DWtGP9SEh5m/",
+    "links": [],
+    "images": [
+      "1.jpg"
+    ]
   },
   {
-    slug: "the-awakening-chords",
-    icon: "",
-    title: "ദിവ്യകാരുണ്യാരാധന — The Awakening Chords",
-    date: "October 21, 2025",
-    dateValue: "2025-10-21",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "the-awakening-chords",
+    "icon": "",
+    "title": "ദിവ്യകാരുണ്യാരാധന — The Awakening Chords",
+    "date": "October 21, 2025",
+    "dateValue": "2025-10-21",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "St. Antony's Church Ayroor-ന്റെ ശതാബ്ദിയാഘോഷത്തിന്റെ ഭാഗമായി നടക്കുന്ന അഖണ്ഡ ജപമാലയുടെ പ്രാരംഭ ദിനത്തിൽ, മൂഴിക്കുളം ഫൊറോനയിലെ യുവജനങ്ങൾക്കായി അയിരൂർ കെ.സി.വൈ.എം ഒരു ദിവ്യകാരുണ്യാരാധന സംഘടിപ്പിച്ചു.",
-      "വൈകിട്ട് 7 മുതൽ 8 വരെ ബ. റോബിൻ ചിറ്റൂപറമ്പിൽ അച്ചന്റെ നേതൃത്വത്തിൽ നടത്തിയ ഈ ആരാധനയിൽ മൂഴിക്കുളം ഫൊറോനയിൽ നിന്ന് ഏകദേശം 64 യുവജനങ്ങൾ പങ്കെടുത്തു.",
+      "വൈകിട്ട് 7 മുതൽ 8 വരെ ബ. റോബിൻ ചിറ്റൂപറമ്പിൽ അച്ചന്റെ നേതൃത്വത്തിൽ നടത്തിയ ഈ ആരാധനയിൽ മൂഴിക്കുളം ഫൊറോനയിൽ നിന്ന് ഏകദേശം 64 യുവജനങ്ങൾ പങ്കെടുത്തു."
     ],
-    instagram: "https://www.instagram.com/p/DQHQOfJElfr/",
-    links: [],
-    images: ["1.jpg"],
+    "instagram": "https://www.instagram.com/p/DQHQOfJElfr/",
+    "links": [],
+    "images": [
+      "1.jpg"
+    ],
+    "showFullCover": true
   },
   {
-    slug: "kcym-trip-2025",
-    icon: "",
-    title: "KCYM TRIP 2025",
-    date: "September 13, 2025",
-    dateValue: "2025-09-13",
-    type: "Offline",
-    status: null,
-    description: [],
-    links: [],
-    images: ["1.png", "2.png"],
+    "slug": "kcym-trip-2025",
+    "icon": "",
+    "title": "KCYM TRIP 2025",
+    "date": "September 13, 2025",
+    "dateValue": "2025-09-13",
+    "type": "Offline",
+    "status": null,
+    "description": [],
+    "links": [],
+    "images": [
+      "1.png",
+      "2.png"
+    ]
   },
   {
-    slug: "pookalam-matsaram",
-    icon: "",
-    title: "പൂക്കള മത്സരം",
-    date: "September 6, 2025",
-    dateValue: "2025-09-06",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "pookalam-matsaram",
+    "icon": "",
+    "title": "പൂക്കള മത്സരം",
+    "date": "September 6, 2025",
+    "dateValue": "2025-09-06",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "KCYM അയിരൂർ യൂണിറ്റിന്റെ നേതൃത്വത്തിൽ നടത്തുന്ന ഇടവകയുടെ ഓണാഘോഷം ONAARAV (ഓണാരവ്) 2025, ഭാഗമായി പൂക്കള മത്സരം നടത്തുന്നുണ്ട്. പങ്കെടുക്കുന്ന എല്ലാ യൂണിറ്റുകളും 10.00 am റിപ്പോർട്ട് ചെയ്യേണ്ടതാണ്.",
       "10.30 മുതൽ 12 വരെയാണ് മത്സരം നടത്തുന്നത്. അനുവദിച്ചിരിക്കുന്ന ക്ലാസ് മുറിയിൽ ഒരു മീറ്റർ വ്യാസമുള്ള പൂക്കളം ആണ് പരിഗണിക്കുന്നത്.",
-      "പൂർണ്ണമായും പൂക്കളും ഇലകളും കൊണ്ട് മാത്രമായിരിക്കണം പൂക്കളം നിർമ്മിക്കേണ്ടത്. വിധികർത്താക്കളുടെ വിധി അന്തിമമായിരിക്കും.",
+      "പൂർണ്ണമായും പൂക്കളും ഇലകളും കൊണ്ട് മാത്രമായിരിക്കണം പൂക്കളം നിർമ്മിക്കേണ്ടത്. വിധികർത്താക്കളുടെ വിധി അന്തിമമായിരിക്കും."
     ],
-    links: [],
-    images: ["1.png", "2.png", "3.png", "4.png"],
+    "links": [],
+    "images": [
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png"
+    ],
+    "focal": "46% 0%"
   },
   {
-    slug: "vadamvali-matsaram",
-    icon: "",
-    title: "വടംവലി മത്സരം",
-    date: "September 6, 2025",
-    dateValue: "2025-09-06",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "vadamvali-matsaram",
+    "icon": "",
+    "title": "വടംവലി മത്സരം",
+    "date": "September 6, 2025",
+    "dateValue": "2025-09-06",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "വടംവലി മത്സരം സെപ്റ്റംബർ 6ന് 9 മണിക് തുടങ്ങുന്നതാണ്. കൃത്യം 8 മണിക് രജിസ്റ്റർ ചെയ്ത എല്ലാ ടീമുകളും റിപ്പോർട്ട് ചെയ്യണം. 8 മണി മുതൽ 8:30 വരെ ആയിരിക്കും റിപ്പോർട്ടിങ് സമയം (തൂക്കം നോക്കൽ).",
       "ഒരു ടീമിൽ 7 പേർക്കാണ് മത്സരിക്കാൻ സാധിക്കുക. 500 കിലോ ആണ് ടീമിന്റെ മൊത്തം തൂക്കം അനുവദിക്കുക. 1 സബ് അനുവദനീയമാണ്. (സബ് മത്സരിക്കുമ്പോൾ ടീമിന്റെ ആദ്യ തൂക്കത്തിനേക്കാൾ 5 കിലോ കുറവായിരിക്കണം)",
-      "കമ്മിറ്റിയുടെ തീരുമാനം അന്തിമമാണ്.",
+      "കമ്മിറ്റിയുടെ തീരുമാനം അന്തിമമാണ്."
     ],
-    links: [],
-    images: ["1.png", "2.png"],
+    "links": [],
+    "images": [
+      "1.png",
+      "2.png"
+    ],
+    "focal": "50% 60%"
   },
   {
-    slug: "gimmick",
-    icon: "",
-    title: "ജിമിട്ട്",
-    date: "September 6, 2025",
-    dateValue: "2025-09-06",
-    type: "Offline",
-    status: null,
-    description: [
-      "കെ.സി.വൈ.എം. അയിരൂർ യൂണിറ്റിലെ അംഗങ്ങൾക്ക് മാത്രമായ് നടത്തുന്ന ഓണാഘോഷം ജിമിട്ട് September 6ന് വൈകിട്ട് 3 മണി മുതൽ നടത്തപ്പെടുന്നു.",
+    "slug": "gimmick",
+    "icon": "",
+    "title": "ജിമിട്ട്",
+    "date": "September 6, 2025",
+    "dateValue": "2025-09-06",
+    "type": "Offline",
+    "status": null,
+    "description": [
+      "കെ.സി.വൈ.എം. അയിരൂർ യൂണിറ്റിലെ അംഗങ്ങൾക്ക് മാത്രമായ് നടത്തുന്ന ഓണാഘോഷം ജിമിട്ട് September 6ന് വൈകിട്ട് 3 മണി മുതൽ നടത്തപ്പെടുന്നു."
     ],
-    links: [],
-    images: ["1.png", "2.png"],
+    "links": [],
+    "images": [
+      "1.png",
+      "2.png"
+    ],
+    "focal": "54% 0%"
   },
   {
-    slug: "onaarav-2025",
-    icon: "",
-    title: "ONAARAV (ഓണാരവ്) 2025",
-    date: "September 6, 2025",
-    dateValue: "2025-09-06",
-    type: "Offline",
-    status: null,
-    description: [
-      "കെ.സി.വൈ.എം. അയിരൂർ യൂണിറ്റിന്റെ നേതൃത്വത്തിൽ നടത്തുന്ന ഇടവകയ്യുടെ ഓണാഘോഷം ONAARAV (ഓണാരവ്) 2025, September 6ന് രാവിലെ 9 മണി മുതൽ നടത്തപ്പെടുന്നു — വടംവലി മത്സരം, പൂക്കള മത്സരം, ജിമിട്ട് എന്നിവ ഉൾപ്പെടെ.",
+    "slug": "onaarav-2025",
+    "icon": "",
+    "title": "ONAARAV (ഓണാരവ്) 2025",
+    "date": "September 6, 2025",
+    "dateValue": "2025-09-06",
+    "type": "Offline",
+    "status": null,
+    "description": [
+      "കെ.സി.വൈ.എം. അയിരൂർ യൂണിറ്റിന്റെ നേതൃത്വത്തിൽ നടത്തുന്ന ഇടവകയ്യുടെ ഓണാഘോഷം ONAARAV (ഓണാരവ്) 2025, September 6ന് രാവിലെ 9 മണി മുതൽ നടത്തപ്പെടുന്നു — വടംവലി മത്സരം, പൂക്കള മത്സരം, ജിമിട്ട് എന്നിവ ഉൾപ്പെടെ."
     ],
-    links: [],
-    images: ["1.png", "2.png", "3.png"],
+    "links": [],
+    "images": [
+      "1.png",
+      "2.png",
+      "3.png"
+    ],
+    "focal": "51% 44%"
   },
   {
-    slug: "onam-kit-distribution",
-    icon: "",
-    title: "ഓണം കിറ്റ് വിതരണം",
-    date: "September 4, 2025",
-    dateValue: "2025-09-04",
-    type: null,
-    status: null,
-    description: [
+    "slug": "onam-kit-distribution",
+    "icon": "",
+    "title": "ഓണം കിറ്റ് വിതരണം",
+    "date": "September 4, 2025",
+    "dateValue": "2025-09-04",
+    "type": null,
+    "status": null,
+    "description": [
       "മാവേലിയുടെ കാലത്തെപ്പോലെ സമത്വവും സമാധാനവും നിറഞ്ഞ ഓണം ആഘോഷിക്കാനായി അയിരൂർ ഒരുങ്ങി. നമ്മുടെ ഇടവക അതിർത്തിയിലെ അർഹതപ്പെട്ട കുടുംബങ്ങൾക്ക് കെ.സി.വൈ.എം അയിരൂർ ഓണം കിറ്റ് വിതരണം നടത്തി.",
-      "അയിരൂർ ഇടവകയിലെ എല്ലാ കുടുംബങ്ങളും ഏറ്റവും സന്തോഷത്തോടെ ഓണം ആഘോഷിക്കട്ടെ എന്ന ലക്ഷ്യത്തോടെ. എല്ലാവർക്കും സംഘടനയുടെ ഓണാശംസകൾ.",
+      "അയിരൂർ ഇടവകയിലെ എല്ലാ കുടുംബങ്ങളും ഏറ്റവും സന്തോഷത്തോടെ ഓണം ആഘോഷിക്കട്ടെ എന്ന ലക്ഷ്യത്തോടെ. എല്ലാവർക്കും സംഘടനയുടെ ഓണാശംസകൾ."
     ],
-    links: [],
-    images: ["1.png"],
+    "links": [],
+    "images": [
+      "1.png"
+    ]
   },
   {
-    slug: "efootball-tournament",
-    icon: "🎮",
-    title: "EFootball Gaming Tournament",
-    date: "September 1, 2025 · 1:30 PM – 4:30 PM",
-    dateValue: "2025-09-01",
-    type: "Online",
-    status: "cancelled",
-    description: [
+    "slug": "efootball-tournament",
+    "icon": "🎮",
+    "title": "EFootball Gaming Tournament",
+    "date": "September 1, 2025 · 1:30 PM – 4:30 PM",
+    "dateValue": "2025-09-01",
+    "type": "Online",
+    "status": "cancelled",
+    "description": [
       "Level Up Your Game! Join the ultimate PES showdown at the EFOOTBALL GAMING TOURNAMENT 🏆 — intense battles, cool vibes & a prize pool of ₹2000*.",
       "Entry Fee: ₹40 · Venue: Online · Contact: 9747423382, 6282973569.",
-      "Game On. Glory Awaits. #EfootballAyroor",
+      "Game On. Glory Awaits. #EfootballAyroor"
     ],
-    links: [],
-    images: ["1.png", "2.png"],
+    "links": [],
+    "images": [
+      "1.png",
+      "2.png"
+    ]
   },
   {
-    slug: "centenary-torch-relay",
-    icon: "",
-    title: "ശതാബ്ദി - ദീപശിഖ പ്രയാണം",
-    date: "August 24, 2025",
-    dateValue: "2025-08-24",
-    type: "Offline",
-    status: null,
-    description: [
-      "ശതാബ്ദിയുടെ നിറവിൽ ദീപശിഖ പ്രയാണത്തിൽ ദീപശിഖ പിടിച്ചോടാൻ സ്വയം പ്രേരിതമായി മുന്നോട്ടുവന്ന KCYM executive ആയ Elvin Varghese ന് KCYM ന്റെ അഭിനന്ദനങ്ങളും നന്ദിയും അർപ്പിച്ചുകൊള്ളുന്നു.",
+    "slug": "centenary-torch-relay",
+    "icon": "",
+    "title": "ശതാബ്ദി - ദീപശിഖ പ്രയാണം",
+    "date": "August 24, 2025",
+    "dateValue": "2025-08-24",
+    "type": "Offline",
+    "status": null,
+    "description": [
+      "ശതാബ്ദിയുടെ നിറവിൽ ദീപശിഖ പ്രയാണത്തിൽ ദീപശിഖ പിടിച്ചോടാൻ സ്വയം പ്രേരിതമായി മുന്നോട്ടുവന്ന KCYM executive ആയ Elvin Varghese ന് KCYM ന്റെ അഭിനന്ദനങ്ങളും നന്ദിയും അർപ്പിച്ചുകൊള്ളുന്നു."
     ],
-    links: [],
-    images: ["1.png"],
-  },
-  {
-    slug: "scrap-collection",
-    icon: "♻️",
-    title: "Scrap Collection",
-    date: "August 15 – 17, 2025",
-    dateValue: "2025-08-15",
-    type: "Offline",
-    status: null,
-    description: [],
-    links: [],
-    images: ["1.png"],
-  },
-  {
-    slug: "career-guidance",
-    icon: "📖",
-    title: "Career Guidance",
-    date: "May 31, 2025",
-    dateValue: "2025-05-31",
-    type: "Offline",
-    status: null,
-    description: [],
-    links: [
-      { label: "View Course List", href: "https://docs.google.com/spreadsheets/d/145IaIgrI6y9q4WOGEaxnbO5IG16is3mNLnhEEaFUrAU/edit?usp=sharing", external: true },
-      { label: "View Presentation Files", href: "https://drive.google.com/drive/folders/1Zon0ynYCHjTMnYWQSGup2l7JrfWV2exy", external: true },
+    "links": [],
+    "images": [
+      "1.png"
     ],
-    images: ["1.png"],
+    "focal": "50% 0%"
   },
   {
-    slug: "musical-skit",
-    icon: "",
-    title: "Musical Skit Performance Against Narcotics",
-    date: "May 18, 2025",
-    dateValue: "2025-05-18",
-    type: "Offline",
-    status: null,
-    description: [],
-    links: [
-      { label: "Download Performance Audio", href: "https://drive.google.com/file/d/1ZYn6pIVz6N_x0A5kZydz6hci3qLGgQll/view?usp=sharing", external: true },
+    "slug": "scrap-collection",
+    "icon": "♻️",
+    "title": "Scrap Collection",
+    "date": "August 15 – 17, 2025",
+    "dateValue": "2025-08-15",
+    "type": "Offline",
+    "status": null,
+    "description": [],
+    "links": [],
+    "images": [
+      "1.png"
     ],
-    images: ["1.png", "2.jpg"],
+    "focal": "56% 0%"
   },
   {
-    slug: "membership-day",
-    icon: "",
-    title: "KCYM Membership Day",
-    date: "April 27, 2025 · 9:00 AM",
-    dateValue: "2025-04-27",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "career-guidance",
+    "icon": "📖",
+    "title": "Career Guidance",
+    "date": "May 31, 2025",
+    "dateValue": "2025-05-31",
+    "type": "Offline",
+    "status": null,
+    "description": [],
+    "links": [
+      {
+        "label": "View Course List",
+        "href": "https://docs.google.com/spreadsheets/d/145IaIgrI6y9q4WOGEaxnbO5IG16is3mNLnhEEaFUrAU/edit?usp=sharing",
+        "external": true
+      },
+      {
+        "label": "View Presentation Files",
+        "href": "https://drive.google.com/drive/folders/1Zon0ynYCHjTMnYWQSGup2l7JrfWV2exy",
+        "external": true
+      }
+    ],
+    "images": [
+      "1.png"
+    ],
+    "focal": "43% 62%"
+  },
+  {
+    "slug": "musical-skit",
+    "icon": "",
+    "title": "Musical Skit Performance Against Narcotics",
+    "date": "May 18, 2025",
+    "dateValue": "2025-05-18",
+    "type": "Offline",
+    "status": null,
+    "description": [],
+    "links": [
+      {
+        "label": "Download Performance Audio",
+        "href": "https://drive.google.com/file/d/1ZYn6pIVz6N_x0A5kZydz6hci3qLGgQll/view?usp=sharing",
+        "external": true
+      }
+    ],
+    "images": [
+      "1.png",
+      "2.jpg"
+    ]
+  },
+  {
+    "slug": "membership-day",
+    "icon": "",
+    "title": "KCYM Membership Day",
+    "date": "April 27, 2025 · 9:00 AM",
+    "dateValue": "2025-04-27",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "The much-awaited KCYM Membership Day is happening on April 27th (Sunday) at 9:00 AM.",
       "Venue: St. Antony's Church Ayroor. Be present by 8:45 AM on April 27th.",
-      "Your presence and support will make this day even more special! See you all there! 🙌",
+      "Your presence and support will make this day even more special! See you all there! 🙌"
     ],
-    links: [],
-    images: [],
+    "links": [],
+    "images": []
   },
   {
-    slug: "anti-narcotic-cycle-rally",
-    icon: "",
-    title: "ലഹരി വിരുദ്ധ സൈക്കിൾ റാലി",
-    date: "April 16, 2025",
-    dateValue: "2025-04-16",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "anti-narcotic-cycle-rally",
+    "icon": "",
+    "title": "ലഹരി വിരുദ്ധ സൈക്കിൾ റാലി",
+    "date": "April 16, 2025",
+    "dateValue": "2025-04-16",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "ഇടവക വികാരി ഫാ.ജോയ്‌സ് കൈതക്കോട്ടിലിന്റെ നേതൃത്വത്തിൽ മതബോധന വിദ്യാർത്ഥികൾക്ക് വേണ്ടി കെ.സി.വൈ.എം. സംഘടനയുടെ സഹകരണത്തോടെ ലഹരി വിരുദ്ധ സൈക്കിൾ റാലി ഏപ്രിൽ 15 ബുധനാഴ്ച നടത്തുകയുണ്ടായി.",
       "ചെങ്ങമനാട് പോലീസ് സ്റ്റേഷൻ സീനിയർ സിവിൽ പോലീസ് ഓഫീസർ - ബാലചന്ദ്രൻ പി കെ, സൈക്കിൾ റാലി ഫ്ലാഗ് ഓഫ് ചെയ്തു ഉദ്ഘാടനം നിർവഹിച്ചു.",
-      "ഇടവക വികാരി - ഫാ.ജോയ്‌സ് കൈതക്കോട്ടിൽ, കെ.സി.വൈ.എം. അയിരൂർ യൂണിറ്റ് പ്രസിഡന്റ് - അലീന കെ എസ് എന്നിവർ സംസാരിച്ചു.",
+      "ഇടവക വികാരി - ഫാ.ജോയ്‌സ് കൈതക്കോട്ടിൽ, കെ.സി.വൈ.എം. അയിരൂർ യൂണിറ്റ് പ്രസിഡന്റ് - അലീന കെ എസ് എന്നിവർ സംസാരിച്ചു."
     ],
-    tags: ["#kcymayroor", "#kcymernakulamangamalymajorarchdiocese", "#youturn", "#clcayroor"],
-    links: [],
-    images: ["poster.png", "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png"],
+    "tags": [
+      "#kcymayroor",
+      "#kcymernakulamangamalymajorarchdiocese",
+      "#youturn",
+      "#clcayroor"
+    ],
+    "links": [],
+    "images": [
+      "poster.png",
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png",
+      "5.png",
+      "6.png",
+      "7.png",
+      "8.png",
+      "9.png",
+      "10.png",
+      "11.png",
+      "12.png"
+    ]
   },
   {
-    slug: "malayattoor-pilgrimage",
-    icon: "",
-    title: "മലയാറ്റൂർ തീർത്ഥാടനം",
-    date: "April 13, 2025",
-    dateValue: "2025-04-13",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "malayattoor-pilgrimage",
+    "icon": "",
+    "title": "മലയാറ്റൂർ തീർത്ഥാടനം",
+    "date": "April 13, 2025",
+    "dateValue": "2025-04-13",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "കെ. സി. വൈ. എം. ന്റെ നേതൃത്വത്തിൽ നടത്തുന്ന മലയാറ്റൂർ തീർത്ഥാടനം ഈ വർഷം ഏപ്രിൽ 13ന് ഓശാന ഞായറാഴ്ച്ച രാത്രി 7 മണിക്ക് പള്ളി അങ്കണത്തിൽ നിന്നും ആരംഭിക്കുന്നു. എട്ടാം ക്ലാസ് മുതലുള്ളവരെയാണ് പങ്കെടുപ്പിക്കുന്നത്.",
       "തീർത്ഥാടനത്തിൽ പങ്കെടുക്കാൻ താല്പര്യപെടുന്നവർ ഏപ്രിൽ 12 നു മുൻപ് കെ. സി. വൈ. എം. ഭാരവാഹികളുടെ അടുത്തോ അഥവാ 9497573579 (KCYM Ayroor) എന്ന വാട്സാപ്പ് നമ്പറിലോ പേരും, യൂണിറ്റും, ഫോൺ നമ്പറും, നൽകി റജിസ്റ്റർ ചെയ്യാൻ അഭ്യർത്ഥിക്കുന്നു.",
-      "റജിസ്ട്രേഷൻ ഫീ ₹100 രൂപയാണ്. ഈ തുക ഏപ്രിൽ 13ന് 7 മണിക്ക് മുൻപ് ഭാരവാഹികളെ ഏൽപിക്കണം എന്ന് ഓർമിപ്പിക്കുന്നു.",
+      "റജിസ്ട്രേഷൻ ഫീ ₹100 രൂപയാണ്. ഈ തുക ഏപ്രിൽ 13ന് 7 മണിക്ക് മുൻപ് ഭാരവാഹികളെ ഏൽപിക്കണം എന്ന് ഓർമിപ്പിക്കുന്നു."
     ],
-    tags: ["#malayatoor"],
-    links: [],
-    images: ["1.png", "2.png"],
+    "tags": [
+      "#malayatoor"
+    ],
+    "links": [],
+    "images": [
+      "1.png",
+      "2.png"
+    ],
+    "focal": "52% 22%"
   },
   {
-    slug: "pre-membership-session",
-    icon: "",
-    title: "KCYM Pre-Membership Session",
-    date: "April 12, 2025 · 6:30 PM",
-    dateValue: "2025-04-12",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "pre-membership-session",
+    "icon": "",
+    "title": "KCYM Pre-Membership Session",
+    "date": "April 12, 2025 · 6:30 PM",
+    "dateValue": "2025-04-12",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "In association with Membership Day, a Pre-Membership Session is being conducted on April 12th (Saturday) at 6:30 PM.",
       "Session by: Adv Binu John — Former State President, KCYM; Former Treasurer, Catholic Council of India; Former Pastoral Council Secretary, Archdiocese of Ernakulam-Angamaly.",
-      "Attendance is mandatory for those seeking KCYM membership. Venue: Parish Hall, St. Antony's Church Ayroor. Be present by 6:15 PM.",
+      "Attendance is mandatory for those seeking KCYM membership. Venue: Parish Hall, St. Antony's Church Ayroor. Be present by 6:15 PM."
     ],
-    tags: ["#KCYMAyroor", "#MembershipDay", "#PreMembershipSession"],
-    links: [],
-    images: [],
+    "tags": [
+      "#KCYMAyroor",
+      "#MembershipDay",
+      "#PreMembershipSession"
+    ],
+    "links": [],
+    "images": []
   },
   {
-    slug: "pindi-alankara-matsaram",
-    icon: "🎍",
-    title: "പിണ്ടി അലങ്കാര മത്സരം",
-    date: "February 23, 2025 · 8:30 AM – 10:30 AM",
-    dateValue: "2025-02-23",
-    type: "Offline",
-    status: null,
-    description: [
+    "slug": "pindi-alankara-matsaram",
+    "icon": "🎍",
+    "title": "പിണ്ടി അലങ്കാര മത്സരം",
+    "date": "February 23, 2025 · 8:30 AM – 10:30 AM",
+    "dateValue": "2025-02-23",
+    "type": "Offline",
+    "status": null,
+    "description": [
       "കെ.സി.വൈ.എം അയിരൂർ നടത്തുന്ന പിണ്ടി അലങ്കാര മത്സരം. നിബന്ധനകൾ: മത്സരത്തിൽ പങ്കെടുക്കാൻ താല്പര്യം ഉള്ളവർ 10 രൂപ അടച്ച് registration ചെയുക.",
       "പിണ്ടി അലങ്കാരത്തിന് വർണ്ണ പേപ്പറുകൾ, പേപ്പർ കാർഡ് ബോർഡ്, നൂൽ കമ്പി, ചെമ്പ് കമ്പി, റിപ്പർ, ചാർട്ട് പേപ്പർ തുടങ്ങിയവ ഉപയോഗിക്കാവുന്നതാണ്. പ്ലാസ്റ്റിക്, തെർമോകോൾ, ഫോം ഷീറ്റ്, കുരുത്തോല ഉപയോഗിക്കാൻ പാടുള്ളതല്ല.",
-      "പിണ്ടി അലങ്കാരം ഉൾപ്പെടെ ഗ്രൗണ്ട് ലെവലിൽ നിന്നും ആറടി വരെയുള്ള ഉയരം പാടുള്ളൂ (maximum). ജഡ്ജസിന്റെ തീരുമാനം അന്തിമമായിരിക്കും.",
+      "പിണ്ടി അലങ്കാരം ഉൾപ്പെടെ ഗ്രൗണ്ട് ലെവലിൽ നിന്നും ആറടി വരെയുള്ള ഉയരം പാടുള്ളൂ (maximum). ജഡ്ജസിന്റെ തീരുമാനം അന്തിമമായിരിക്കും."
     ],
-    resultBlock: {
-      heading: "Winners",
-      winners: [
+    "resultBlock": {
+      "heading": "Winners",
+      "winners": [
         "1st — Chinju Antony (St. Peter Unit)",
         "2nd — Casper Lea Vimal (St. Augustine Unit)",
-        "3rd — Tomy Manavalan (St. George Unit), Arthur Bestin (St. Francis Unit)",
+        "3rd — Tomy Manavalan (St. George Unit), Arthur Bestin (St. Francis Unit)"
       ],
-      othersHeading: "Other Participants",
-      others: [
+      "othersHeading": "Other Participants",
+      "others": [
         "Ashmin K S — St. Jude Unit",
         "Esabella Biju — St. George Unit",
         "Jithin Jacob — St. Thomas Unit",
         "Niby Sony — St. Peter Unit",
         "Paul Anto — St. George Unit",
         "Puthussery Ouseph Antu — St. Peter Unit",
-        "Thomas P O — St. Peter Unit",
-      ],
+        "Thomas P O — St. Peter Unit"
+      ]
     },
-    links: [],
-    images: ["poster.png", "1.jpg", "2.png", "3.png"],
-  },
+    "links": [],
+    "images": [
+      "poster.png",
+      "1.jpg",
+      "2.png",
+      "3.png"
+    ]
+  }
 ];
