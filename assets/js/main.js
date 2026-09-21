@@ -132,14 +132,31 @@ function initVerseTrigger() {
 }
 
 function applyLanguage(lang) {
-  const dict = (typeof I18N !== "undefined" && I18N[lang]) || {};
+  const dict = (typeof I18N_ML !== "undefined" && I18N_ML) || {};
   document.querySelectorAll("[data-i18n]").forEach((el) => {
+    if (el.dataset.i18nEn === undefined) el.dataset.i18nEn = el.innerHTML;
     const key = el.getAttribute("data-i18n");
-    if (dict[key]) el.textContent = dict[key];
+    el.innerHTML = lang === "ml" && dict[key] ? dict[key] : el.dataset.i18nEn;
   });
+  const labels = (typeof ACCORDION_LABELS_ML !== "undefined" && ACCORDION_LABELS_ML) || {};
+  document.querySelectorAll("[data-label-show]").forEach((btn) => {
+    if (btn.dataset.labelShowEn === undefined) {
+      btn.dataset.labelShowEn = btn.getAttribute("data-label-show");
+      btn.dataset.labelHideEn = btn.getAttribute("data-label-hide");
+    }
+    const showText = lang === "ml" && labels[btn.dataset.labelShowEn] ? labels[btn.dataset.labelShowEn] : btn.dataset.labelShowEn;
+    const hideText = lang === "ml" && labels[btn.dataset.labelHideEn] ? labels[btn.dataset.labelHideEn] : btn.dataset.labelHideEn;
+    btn.setAttribute("data-label-show", showText);
+    btn.setAttribute("data-label-hide", hideText);
+    const labelEl = btn.querySelector("[data-accordion-label]");
+    const content = document.getElementById(btn.getAttribute("data-accordion-toggle"));
+    if (labelEl && content) labelEl.textContent = content.classList.contains("open") ? hideText : showText;
+  });
+
   const toggle = document.getElementById("lang-toggle");
   if (toggle) toggle.textContent = lang === "ml" ? "മല" : "EN";
   document.documentElement.setAttribute("lang", lang === "ml" ? "ml" : "en");
+  window.dispatchEvent(new CustomEvent("languagechange", { detail: { lang } }));
 }
 
 function initLanguageToggle() {
