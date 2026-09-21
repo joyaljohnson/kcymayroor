@@ -83,6 +83,12 @@ function onFormSubmit(e) {
 
   doc.saveAndClose();
 
+  // Give Drive a moment to finish processing the saved changes (image
+  // layout in particular) before requesting the PDF export — exporting
+  // immediately after saveAndClose can occasionally mis-measure content
+  // and push it onto an extra page that doesn't appear in the editor.
+  Utilities.sleep(2000);
+
   // --- Export as PDF, save to the submissions folder, delete the temp Doc ---
   var pdfBlob = DriveApp.getFileById(copy.getId()).getAs('application/pdf');
   pdfBlob.setName(fileName);
