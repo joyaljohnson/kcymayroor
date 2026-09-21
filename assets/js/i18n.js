@@ -169,8 +169,7 @@ const I18N_ML = {
 // translated generically by main.js rather than needing one data-i18n
 // key per button.
 const ACCORDION_LABELS_ML = {
-  "View Ex-Officials": "മുൻ ഭാരവാഹികളെ കാണുക",
-  "Hide Ex-Officials": "മുൻ ഭാരവാഹികളെ മറയ്ക്കുക",
+  "Ex-Officials": "മുൻ ഭാരവാഹികൾ",
   "Read More": "കൂടുതൽ വായിക്കാൻ",
   "Hide Details": "വിശദാംശങ്ങൾ മറയ്ക്കുക",
 };
