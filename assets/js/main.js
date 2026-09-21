@@ -131,6 +131,27 @@ function initVerseTrigger() {
   });
 }
 
+function syncVerseWidgetsTheme(isDark) {
+  document.querySelectorAll("daily-verse-widget").forEach((el) => {
+    if (isDark) el.setAttribute("theme", "dark");
+    else el.removeAttribute("theme");
+  });
+}
+
+function initThemeToggle() {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn || btn.dataset.bound === "1") return;
+  btn.dataset.bound = "1";
+
+  syncVerseWidgetsTheme(document.documentElement.classList.contains("dark"));
+
+  btn.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    syncVerseWidgetsTheme(isDark);
+  });
+}
+
 function initMembershipDeepLink() {
   const params = new URLSearchParams(window.location.search);
   if (params.get("membership") === "open") {
@@ -153,6 +174,7 @@ async function initSite() {
   initScrollReveal();
   initAccordions();
   initVerseTrigger();
+  initThemeToggle();
   initMembershipDeepLink();
 }
 

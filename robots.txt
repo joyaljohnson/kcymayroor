@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /focal-picker.html
+Disallow: /google-apps-script/
+
+Sitemap: https://kcymayroor.in/sitemap.xml

@@ -21,6 +21,10 @@
       </div>
 
       <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="theme-toggle w-8 h-8 flex items-center justify-center rounded-full border-2 border-primary text-primary transition-colors duration-300 hover:bg-primary/5" aria-label="Toggle dark mode">
+          <svg class="theme-icon-sun w-3.5 h-3.5 absolute inset-0 m-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+          <svg class="theme-icon-moon w-3.5 h-3.5 absolute inset-0 m-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+        </button>
         <div class="relative" id="verse-trigger-wrap">
           <button id="verse-trigger" class="verse-trigger w-8 h-8 flex items-center justify-center border-2 border-primary text-primary transition-all duration-300 hover:bg-primary/5" aria-label="Verse of the Day" aria-expanded="false" aria-controls="verse-popover">
             <svg class="verse-icon-closed w-3.5 h-3.5 absolute inset-0 m-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>

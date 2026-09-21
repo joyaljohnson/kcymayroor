@@ -26,6 +26,31 @@
   --radius: .75rem;
 }
 
+:root.dark {
+  --background: 215 28% 9%;
+  --foreground: 210 20% 92%;
+  --primary: 0 70% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 45 93% 62%;
+  --secondary-foreground: 215 28% 12%;
+  --muted: 215 20% 16%;
+  --muted-foreground: 215 15% 65%;
+  --accent: 45 93% 62%;
+  --accent-foreground: 215 28% 12%;
+  --border: 215 20% 20%;
+  --input: 215 20% 20%;
+  --ring: 0 70% 52%;
+  --card: 215 25% 12%;
+  --card-foreground: 210 20% 92%;
+  --destructive: 0 70% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --chart-1: 0 70% 52%;
+  --chart-2: 45 93% 62%;
+  --chart-3: 215 20% 70%;
+  --chart-4: 120 35% 55%;
+  --chart-5: 280 55% 60%;
+}
+
 * { -webkit-tap-highlight-color: transparent; }
 
 html { scroll-behavior: smooth; }
@@ -155,6 +180,23 @@ body {
 }
 @media (max-width: 480px) {
   .verse-popover { right: -3.5rem; }
+}
+
+/* ---------- Theme toggle (dark mode) ---------- */
+.theme-toggle {
+  border-radius: 9999px;
+  position: relative;
+}
+.theme-icon-sun,
+.theme-icon-moon {
+  transition: opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1), transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.theme-icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+.theme-icon-moon { opacity: 0; transform: rotate(90deg) scale(0.6); }
+:root.dark .theme-icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+:root.dark .theme-icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-icon-sun, .theme-icon-moon { transition: opacity 0.15s linear; transform: none !important; }
 }
 
 /* ---------- Filter pill ---------- */
