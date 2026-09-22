@@ -114,9 +114,17 @@ function initVerseTrigger() {
     btn.setAttribute("aria-expanded", open ? "true" : "false");
   }
 
-  // Hover-to-open is handled purely in CSS (desktop/mouse). This click
-  // handler is the fallback for touch devices, which have no hover state,
-  // and also lets anyone toggle it closed again after opening via hover+click.
+  // The "open" class is the single source of truth for visibility (see
+  // .verse-popover / #verse-trigger-wrap.open in style.css) so pressing the
+  // icon always closes it, on every device. Hover-to-open on mouse devices
+  // is done here in JS rather than via CSS :hover, because a CSS :hover
+  // rule can get "stuck" active after a tap on touch devices, which would
+  // make the icon's own click unable to close the popover.
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    wrap.addEventListener("mouseenter", () => setOpen(true));
+    wrap.addEventListener("mouseleave", () => setOpen(false));
+  }
+
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     setOpen(!wrap.classList.contains("open"));

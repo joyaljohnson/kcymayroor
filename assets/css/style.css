@@ -138,16 +138,13 @@ body {
 }
 .verse-icon-open { opacity: 0; transform: rotate(-90deg) scale(0.6); }
 .verse-icon-closed { opacity: 1; transform: rotate(0deg) scale(1); }
-#verse-trigger-wrap:hover .verse-trigger,
 #verse-trigger-wrap.open .verse-trigger {
   border-radius: 10px;
 }
-#verse-trigger-wrap:hover .verse-icon-closed,
 #verse-trigger-wrap.open .verse-icon-closed {
   opacity: 0;
   transform: rotate(90deg) scale(0.6);
 }
-#verse-trigger-wrap:hover .verse-icon-open,
 #verse-trigger-wrap.open .verse-icon-open {
   opacity: 1;
   transform: rotate(0deg) scale(1);
@@ -172,7 +169,6 @@ body {
   transition: opacity .2s ease, transform .2s ease, visibility .2s;
   z-index: 60;
 }
-#verse-trigger-wrap:hover .verse-popover,
 #verse-trigger-wrap.open .verse-popover {
   opacity: 1;
   visibility: visible;
