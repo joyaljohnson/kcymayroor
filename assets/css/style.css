@@ -103,7 +103,7 @@ body {
   transition: max-height .35s ease, opacity .3s ease;
 }
 .accordion-content.open {
-  max-height: 2000px;
+  max-height: 6000px;
   opacity: 1;
 }
 .accordion-chevron { transition: transform .25s ease; }

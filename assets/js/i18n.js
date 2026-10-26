@@ -61,15 +61,21 @@ const I18N_ML = {
 
   // --- Leadership ---
   "leadership-hero-title": "ഞങ്ങളുടെ നേതൃത്വം",
-  "leadership-hero-sub": "2024–2026 കാലയളവിൽ കെ.സി.വൈ.എം അയിരൂരിനെ നയിക്കുന്ന സെക്രട്ടേറിയറ്റിനെ പരിചയപ്പെടാം.",
-  "leadership-secretariat-title": "സെക്രട്ടേറിയറ്റ് 2024–2026",
+  "leadership-hero-sub": "2026–2028 കാലയളവിൽ കെ.സി.വൈ.എം അയിരൂരിനെ നയിക്കുന്ന സെക്രട്ടേറിയറ്റിനെ പരിചയപ്പെടാം.",
+  "leadership-secretariat-title": "സെക്രട്ടേറിയറ്റ് 2026–2028",
   "leadership-secretariat-sub": "യുവജന സമൂഹത്തെ സേവിക്കുന്ന തിരഞ്ഞെടുക്കപ്പെട്ട നേതാക്കൾ",
   "role-President": "പ്രസിഡന്റ്",
   "role-Vice President": "വൈസ് പ്രസിഡന്റ്",
+  "role-Female Vice President": "ഫീമെയിൽ വൈസ് പ്രസിഡന്റ്",
+  "role-Male Vice President": "മെയിൽ വൈസ് പ്രസിഡന്റ്",
   "role-General Secretary": "ജനറൽ സെക്രട്ടറി",
   "role-Joint Secretary": "ജോയിന്റ് സെക്രട്ടറി",
+  "role-Male Joint Secretary": "മെയിൽ ജോയിന്റ് സെക്രട്ടറി",
+  "role-Female Joint Secretary": "ഫീമെയിൽ ജോയിന്റ് സെക്രട്ടറി",
   "role-Treasurer": "ട്രഷറർ",
   "role-Youth Councillor": "യൂത്ത് കൗൺസിലർ",
+  "role-Male Youth Councillor": "മെയിൽ യൂത്ത് കൗൺസിലർ",
+  "role-Female Youth Councillor": "ഫീമെയിൽ യൂത്ത് കൗൺസിലർ",
   "role-Parish Council Member": "ഇടവക കൗൺസിൽ അംഗം",
   "role-Media Coordinator": "മീഡിയ കോർഡിനേറ്റർ",
 
