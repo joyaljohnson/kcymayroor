@@ -11,7 +11,8 @@ const EVENTS = [
     "type": "Offline",
     "status": null,
     "description": [
-      "KCYM Ayroor elected its new Secretariat for the 2026–2028 term. Members gathered together for the election and a group photo with the new team."
+      "KCYM Ayroor elected its new Secretariat for the 2026–2028 term. Members gathered together for the election and a group photo with the new team.",
+      "പുതിയ അംഗങ്ങളിലൂടെ പുതിയ തുടക്കങ്ങൾ, അംഗത്വ പുതുക്കലിലൂടെ കൂടുതൽ കരുത്ത്, പുതിയ നേതൃത്വത്തിലൂടെ പുതിയ പ്രതീക്ഷകൾ… ❤️🤍💛"
     ],
     "instagram": "",
     "links": [],
