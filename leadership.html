@@ -87,8 +87,8 @@
   // People without an `img` get a placeholder icon until one is added.
   const BASE = "https://media.base44.com/images/public/69f1cb41579ddeee84426575/";
   const PHOTO = {
-    aleenaKS: BASE + "c793827c9_image.png",
-    rohan: BASE + "72a105ee1_image.png",
+    aleenaKS: "assets/images/leadership/aleena-ks.jpg",
+    rohan: "assets/images/leadership/rohan-tom.jpg",
     aleenaJohnson: BASE + "50e0158e1_Screenshot2026-04-29at10613PM.png",
     elvin: BASE + "c7949c0ed_image.png",
     antony: BASE + "102bdf1b7_image.png",
@@ -98,16 +98,8 @@
   // each circle's own colour (keyed by file name) so the whole card matches.
   const FRAME_BG = {
     "28008cddd_image.png": "#a9c0e8",
-    "72a105ee1_image.png": "#638f8b",
     "8410c0f65_image.png": "#a96a72",
-    "8702404dd_image.png": "#fbca29",
-    "9bdfba821_image.png": "#f07a95",
-    "aleena-sibi.png": "#b98ea7",
-    "c793827c9_image.png": "#e37c54",
     "c7949c0ed_image.png": "#6e98ac",
-    "f0d2f0bdb_image.png": "#abc5ca",
-    "jibin-sebastian.png": "#555847",
-    "maria-martin.png": "#56b8bd",
   };
 
   // Current secretariat (2026–2028)
@@ -126,21 +118,21 @@
   // Ex-officials, most recent term first
   const EX_OFFICIALS = [
     { img: PHOTO.aleenaKS, name: "Aleena K S", role: "President", term: "October 2024 – 2026" },
-    { img: BASE + "8702404dd_image.png", name: "Joyna Johnson", role: "Vice President", term: "October 2024 – 2026" },
+    { img: "assets/images/leadership/joyna-johnson.jpg", name: "Joyna Johnson", role: "Vice President", term: "October 2024 – 2026" },
     { img: PHOTO.rohan, name: "Rohan Tom", role: "Vice President", term: "October 2024 – 2026" },
     { img: PHOTO.aleenaJohnson, name: "Aleena Johnson", role: "General Secretary", term: "September 2025 – 2026" },
-    { img: BASE + "f0d2f0bdb_image.png", name: "Jebin Paulose", role: "Treasurer", term: "October 2024 – 2026" },
+    { img: "assets/images/leadership/jebin-paulose.jpg", name: "Jebin Paulose", role: "Treasurer", term: "October 2024 – 2026" },
     { img: PHOTO.elvin, name: "Elvin Varghese", role: "Joint Secretary", term: "July 2025 – 2026" },
     { img: BASE + "8410c0f65_image.png", name: "Mary Angelena Raju", role: "Joint Secretary", term: "July 2025 – 2026" },
-    { img: BASE + "9bdfba821_image.png", name: "Janet Maria Raju", role: "Youth Councillor", term: "October 2024 – 2026" },
+    { img: "assets/images/leadership/janet-maria-raju.jpg", name: "Janet Maria Raju", role: "Youth Councillor", term: "October 2024 – 2026" },
     { img: PHOTO.antony, name: "Antony Varghese", role: "Youth Councillor", term: "September 2025 – 2026" },
     { img: BASE + "28008cddd_image.png", name: "Melvin C Victor", role: "Parish Council Member", term: "October 2024 – 2026" },
-    { img: "assets/images/leadership/maria-martin.png", name: "Maria Martin", role: "General Secretary", term: "October 2024 – June 2025" },
-    { img: "assets/images/leadership/jibin-sebastian.png", name: "Jibin Sebastian", role: "Joint Secretary", term: "October 2024 – June 2025" },
-    { img: "assets/images/leadership/aleena-sibi.png", name: "Aleena Sibi", role: "Joint Secretary", term: "October 2024 – June 2025" },
+    { img: "assets/images/leadership/maria-martin.jpg", name: "Maria Martin", role: "General Secretary", term: "October 2024 – June 2025" },
+    { img: "assets/images/leadership/jibin-sebastian.jpg", name: "Jibin Sebastian", role: "Joint Secretary", term: "October 2024 – June 2025" },
+    { img: "assets/images/leadership/aleena-sibi.jpg", name: "Aleena Sibi", role: "Joint Secretary", term: "October 2024 – June 2025" },
     { img: "", name: "Joe Paul", role: "General Secretary", term: "July 2025 – August 2025" },
-    { img: "assets/images/leadership/joyal-johnson.png", name: "Joyal Johnson", role: "Youth Councillor", term: "October 2024 – August 2025" },
-    { img: "assets/images/leadership/joyal-johnson.png", name: "Joyal Johnson", role: "Media Coordinator", term: "October 2024 – December 2025" },
+    { img: "assets/images/leadership/joyal-johnson.jpg", name: "Joyal Johnson", role: "Youth Councillor", term: "October 2024 – August 2025" },
+    { img: "assets/images/leadership/joyal-johnson.jpg", name: "Joyal Johnson", role: "Media Coordinator", term: "October 2024 – December 2025" },
   ];
 
   function roleLabel(role) {
@@ -155,11 +147,11 @@
     const bg = p.img && FRAME_BG[p.img.split("/").pop()];
     const frameStyle = bg ? ` style="background:${bg}"` : "";
     const photo = p.img
-      ? `<img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">`
+      ? `<img src="${p.img}" alt="${p.name}" class="w-full h-full ${bg ? "object-contain" : "object-cover"}">`
       : PLACEHOLDER_ICON;
     return `
       <div class="group relative h-full bg-card rounded-2xl border border-border/50 overflow-hidden hover:shadow-xl transition-all duration-300">
-        <div class="aspect-square bg-gradient-to-br from-primary/10 via-muted to-secondary/10 flex items-center justify-center"${frameStyle}>
+        <div class="aspect-[3/4] bg-gradient-to-br from-primary/10 via-muted to-secondary/10 flex items-center justify-center"${frameStyle}>
           ${photo}
         </div>
         <div class="p-5 text-center">
