@@ -3,6 +3,23 @@
 // controlling which part of the cover photo stays visible when it's cropped to fill the card.
 const EVENTS = [
   {
+    "slug": "secretariat-2026-2028",
+    "icon": "",
+    "title": "Secretariat 2026–2028 — Election & Meet",
+    "date": "October 2026",
+    "dateValue": "2026-10-01",
+    "type": "Offline",
+    "status": null,
+    "description": [
+      "KCYM Ayroor elected its new Secretariat for the 2026–2028 term. Members gathered together for the election and a group photo with the new team."
+    ],
+    "instagram": "",
+    "links": [],
+    "images": [
+      "1.jpg"
+    ]
+  },
+  {
     "slug": "onam-2026-oldage-home-visit",
     "icon": "",
     "title": "ഓണം — Kariyamparambu Jeevodaya Old Age Home Visit",
