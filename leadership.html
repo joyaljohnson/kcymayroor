@@ -140,11 +140,11 @@
 
   const PLACEHOLDER_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-16 h-16 text-primary/30"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
 
-  function personCard(p) {
+  function personCard(p, muted) {
     const bg = p.img && FRAME_BG[p.img.split("/").pop()];
     const frameStyle = bg ? ` style="background:${bg}"` : "";
     const photo = p.img
-      ? `<img src="${p.img}" alt="${p.name}" class="w-full h-full ${bg ? "object-contain" : "object-cover"}">`
+      ? `<img src="${p.img}" alt="${p.name}" class="w-full h-full ${bg ? "object-contain" : "object-cover"}${muted ? " grayscale" : ""}">`
       : PLACEHOLDER_ICON;
     return `
       <div class="group relative h-full bg-card rounded-2xl border border-border/50 overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -163,7 +163,7 @@
     const grid = document.getElementById("leadership-grid");
     if (grid) grid.innerHTML = LEADERSHIP.map(p => `<div data-reveal="up">${personCard(p)}</div>`).join("");
     const exGrid = document.getElementById("ex-officials-grid");
-    if (exGrid) exGrid.innerHTML = EX_OFFICIALS.map(p => `<div>${personCard(p)}</div>`).join("");
+    if (exGrid) exGrid.innerHTML = EX_OFFICIALS.map(p => `<div>${personCard(p, true)}</div>`).join("");
     if (typeof initScrollReveal === "function") initScrollReveal();
   }
   document.addEventListener("DOMContentLoaded", () => setTimeout(renderLeadership, 0));
