@@ -176,6 +176,7 @@ const I18N_ML = {
 // key per button.
 const ACCORDION_LABELS_ML = {
   "Ex-Officials": "മുൻ ഭാരവാഹികൾ",
+  "KCYM Anthem": "കെ.സി.വൈ.എം ഗാനം",
   "View Lyrics": "വരികൾ കാണുക",
   "Hide Lyrics": "വരികൾ മറയ്ക്കുക",
   "Read More": "കൂടുതൽ വായിക്കാൻ",
