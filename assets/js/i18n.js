@@ -28,7 +28,6 @@ const I18N_ML = {
   "home-lyrics-idle": "വരികൾ കാണാൻ തൊടുക",
   "home-view-lyrics": "വരികൾ കാണുക",
   "home-anthem-title": "കെ.സി.വൈ.എം ഗാനം",
-  "parish-anthem-title": "കെ.സി.വൈ.എം ഗാനം",
   "home-hero-join": "പ്രസ്ഥാനത്തിൽ ചേരൂ",
   "home-hero-learnmore": "കൂടുതൽ അറിയാൻ",
   "home-verse-title": "ഇന്നത്തെ വചനം",
