@@ -4,8 +4,9 @@
                           its <p>/<br> markup), one highlighted line as the song plays.
    [data-lyrics-audio]    CSS selector of the <audio> to follow; defaults to the
                           nearest <audio> inside an ancestor.
-   [data-lyrics-current]  button showing the active line ([data-lyrics-line]) while
-                          playing, [data-lyrics-idle] otherwise.
+   [data-lyrics-current]  button showing the active line ([data-lyrics-line]); hidden
+                          until the song reaches the first line.
+   [data-lyrics-panel]    side panel, faded in when the audio plays.
    [data-lyrics-open]     opens #lyrics-modal; [data-lyrics-close] / Esc / backdrop closes.
    [data-lyrics-toggle]   play/pause button for the followed audio. */
 (function () {
@@ -85,15 +86,24 @@
 
   function initCurrent(btn) {
     var audio = findAudio(btn); if (!audio) return;
-    var line = btn.querySelector("[data-lyrics-line]"), idle = btn.querySelector("[data-lyrics-idle]");
+    var line = btn.querySelector("[data-lyrics-line]");
     entryFor(audio).ctrls.push({
       set: function (idx) {
-        var on = idx >= 0;
-        if (on) line.textContent = LINES[idx];
-        line.classList.toggle("hidden", !on);
-        idle.classList.toggle("hidden", on);
+        if (idx >= 0) line.textContent = LINES[idx];
+        btn.style.display = idx >= 0 ? "" : "none"; // "" lets the CSS classes decide (hidden on md+)
       }
     });
+  }
+
+  function initPanel(panel) {
+    var audio = findAudio(panel); if (!audio) return;
+    function show() { panel.classList.add("show"); }
+    function hide() { panel.classList.remove("show"); }
+    audio.addEventListener("play", show);
+    audio.addEventListener("ended", hide);
+    var c = panel.querySelector("[data-lyrics-panel-close]");
+    if (c) c.addEventListener("click", hide);
+    panel._lyricsShow = show; panel._lyricsHide = hide;
   }
 
   function initToggle(btn) {
@@ -128,7 +138,15 @@
       document.body.style.overflow = "";
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
-    document.querySelectorAll("[data-lyrics-open]").forEach(function (b) { b.addEventListener("click", open); });
+    // With room on the right (md+) the side panel shows the lyrics; otherwise use the popup.
+    document.querySelectorAll("[data-lyrics-open]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var panel = document.querySelector("[data-lyrics-panel]");
+        if (panel && getComputedStyle(panel).display !== "none") {
+          if (panel.classList.contains("show")) panel._lyricsHide(); else panel._lyricsShow();
+        } else open();
+      });
+    });
     modal.querySelectorAll("[data-lyrics-close]").forEach(function (b) { b.addEventListener("click", close); });
     modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.classList.contains("hidden")) close(); });
@@ -137,6 +155,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("[data-lyrics]").forEach(initBox);
     document.querySelectorAll("[data-lyrics-current]").forEach(initCurrent);
+    document.querySelectorAll("[data-lyrics-panel]").forEach(initPanel);
     document.querySelectorAll("[data-lyrics-toggle]").forEach(initToggle);
     initModal();
   });

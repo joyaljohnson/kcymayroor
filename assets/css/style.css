@@ -234,3 +234,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .lyric-line { transition: none; transform: none !important; }
 }
+
+/* Hero lyrics panel: hidden until the anthem plays or "View Lyrics" is tapped */
+.lyrics-panel { opacity: 0; visibility: hidden; transform: translateX(12px); transition: opacity .7s ease, transform .7s ease, visibility .7s; }
+.lyrics-panel.show { opacity: 1; visibility: visible; transform: none; }
+@media (prefers-reduced-motion: reduce) { .lyrics-panel { transition: none; transform: none; } }
