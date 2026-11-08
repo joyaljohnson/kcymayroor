@@ -217,3 +217,20 @@ body {
   50% { transform: translateY(-6px); }
 }
 .animate-float { animation: floatY 4s ease-in-out infinite; }
+
+/* ---------- Synced lyrics (KCYM Anthem) ---------- */
+.lyric-line {
+  display: block;
+  cursor: pointer;
+  transition: opacity .3s ease, color .3s ease, transform .3s ease;
+}
+.lyrics-live .lyric-line { opacity: .5; }
+.lyrics-live .lyric-line.active {
+  opacity: 1;
+  color: var(--lyric-active, hsl(var(--primary)));
+  font-weight: 700;
+  transform: scale(1.04);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lyric-line { transition: none; transform: none !important; }
+}
